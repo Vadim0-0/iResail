@@ -1800,7 +1800,7 @@
 }
 
 .productCard-information {
-  padding-bottom: 150px;
+  padding-bottom: 48px;
 
   &__btns {
     display: flex;
@@ -1889,7 +1889,8 @@
         }
 
         &-images {
-          @include grid-ColumnsEqually(2, 32px);
+          display: flex;
+          gap: 32px;
         }
 
         &:nth-child(2) {
@@ -1900,7 +1901,7 @@
           margin-bottom: 59px;
 
           & img {
-            width: 100%;
+            width: 45%;
           }
         }
 
@@ -1918,6 +1919,7 @@
         display: flex;
         flex-direction: column;
         gap: 55px;
+        margin-bottom: 102px;
 
         .productCard-information__content-specifications__sectiion {
 
@@ -2165,7 +2167,7 @@
 /* Страница - Корзина */
 
 .basket-hero {
-  padding-bottom: 52px;
+  padding-bottom: 102px;
 
   &__content {
     display: grid;
@@ -2230,7 +2232,7 @@
             }
 
             &-volume {
-              @include flex-center(6px);
+              @include flex-center(11px);
               padding: 12px 1px;
               width: 80px;
               border-radius: 8px;
@@ -2811,6 +2813,24 @@
     }
   }
 
+  /* Корзина */
+
+  .basket-hero {
+
+    &__content {
+
+      &-products {
+
+        &__list {
+
+          &-item {
+            padding: 52px 20px;
+          }
+        }
+      }
+    }
+  }
+
 }
 
 @media (max-width: 1024px) {
@@ -3301,6 +3321,10 @@
         &__section {
           &-images {
             @include grid-ColumnsEqually(1, 8px);
+
+            & img {
+              width: 100% !important;
+            }
           }
         }
 
@@ -3318,6 +3342,7 @@
 
               }
             }
+
           }
         }
       }
@@ -3379,6 +3404,65 @@
           width: 0;
           background-color: var(--green);
           transition: all 0.3s ease;
+        }
+      }
+    }
+  }
+
+  /* Корзина */
+
+  .basket-hero {
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      &-products {
+
+        &__list {
+
+          &-item {
+            position: relative;
+            padding: 24px 24px;
+            flex-direction: column;
+
+            & img {
+              margin-right: 0;
+              margin-bottom: 32px;
+            }
+
+            &__article {
+
+              &-top {
+
+                & h3 {
+                  max-width: 100%;
+                }
+
+                &__nav {
+
+                  & p {
+                    position: absolute;
+                  }
+
+                  & button {
+                    position: absolute;
+                    top: 24px;
+                    right: 24px;
+                  }
+
+
+                }
+              }
+
+              &-volume {
+                padding: 12px 6px;
+                width: 170px;
+                margin-left: auto;
+                justify-content: space-between;
+              }
+            }
+          }
         }
       }
     }
