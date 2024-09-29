@@ -1800,7 +1800,7 @@
 }
 
 .productCard-information {
-  padding-bottom: 150px;
+  padding-bottom: 48px;
 
   &__btns {
     display: flex;
@@ -1889,7 +1889,8 @@
         }
 
         &-images {
-          @include grid-ColumnsEqually(2, 32px);
+          display: flex;
+          gap: 32px;
         }
 
         &:nth-child(2) {
@@ -1900,7 +1901,7 @@
           margin-bottom: 59px;
 
           & img {
-            width: 100%;
+            width: 45%;
           }
         }
 
@@ -1918,6 +1919,7 @@
         display: flex;
         flex-direction: column;
         gap: 55px;
+        margin-bottom: 102px;
 
         .productCard-information__content-specifications__sectiion {
 
@@ -2165,7 +2167,7 @@
 /* Страница - Корзина */
 
 .basket-hero {
-  padding-bottom: 52px;
+  padding-bottom: 102px;
 
   &__content {
     display: grid;
@@ -2230,7 +2232,7 @@
             }
 
             &-volume {
-              @include flex-center(6px);
+              @include flex-center(11px);
               padding: 12px 1px;
               width: 80px;
               border-radius: 8px;
@@ -2342,6 +2344,499 @@
 
         & button {
           width: 100%;
+        }
+      }
+    }
+  }
+}
+
+/* Оформление заказа */
+
+.makingOrder-hero {
+  padding-bottom: 103px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: auto 296px;
+    gap: 32px;
+
+    &-making {
+      padding: 52px 52px;
+      border-radius: 20px;
+      background-color: var(--white);
+
+      &__block {
+
+        &:not(:last-child ) {
+          padding-bottom: 32px;
+          margin-bottom: 32px;
+          border-bottom: 1px solid var(--background);
+        }
+
+        & h3 {
+          margin-bottom: 8px;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 140%;
+          color: var(--black-2);
+        }
+
+        & p {
+          margin-bottom: 32px;
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 143%;
+          color: var(--gray);
+
+          &.user-data {
+            margin-bottom: 0;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 150%;
+            color: var(--gray-2);
+
+            & a {
+              text-decoration: underline;
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 12px;
+              line-height: 150%;
+              color: var(--gray-2);
+            }
+          }
+        }
+
+        &-form {
+          @include grid-ColumnsEqually(3, 16px);
+
+          & p {
+            margin-bottom: 8px;
+          }
+
+          & input {
+            width: 100%;
+            padding: 13px 17px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-3);
+            font-family: var(--second-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 137%;
+            color: var(--gray-3);
+
+            &::placeholder {
+              font-family: var(--second-family);
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 137%;
+              color: var(--gray-3);
+            }
+          }
+        }
+
+        &-btns {
+          @include grid-ColumnsEqually(2, 16px);
+          margin-bottom: 32px;
+
+          & button {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 0;
+            width: 100%;
+            padding: 21px 21px;
+            border-radius: 8px;
+            border: 1px solid var(--gray-3);
+            @include transition;
+
+            & p {
+              margin-bottom: 0;
+              text-align: start;
+              font-family: var(--second-family);
+              font-weight: 500;
+              font-size: 16px;
+              line-height: 137%;
+              color: var(--black);
+              @include transition;
+
+              &.date {
+                font-family: var(--second-family);
+                font-weight: 400;
+                font-size: 16px;
+                line-height: 137%;
+                color: var(--gray-3);
+              }
+            }
+
+            & svg {
+              margin-right: 16px;
+              stroke: var(--gray-3);
+              @include transition;
+            }
+
+            &.active {
+              border: 2px solid var(--green);
+
+              & svg {
+                stroke: var(--green);
+              }
+            }
+          }
+        }
+
+        &-delivery {
+          position: relative;
+          width: 100%;
+          transition: all 0.5s ease;
+          overflow: hidden;
+
+          &__map {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 377px;
+            border-radius: 20px;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            opacity: 0;
+            pointer-events: none;
+
+            &.active {
+              opacity: 1;
+              pointer-events: all;
+            }
+          }
+
+          &__address {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: all 0.5s ease;
+            opacity: 0;
+            pointer-events: none;
+
+            &.active {
+              opacity: 1;
+              pointer-events: all;
+            }
+
+            .makingOrder-hero__content-making__block-form {
+              grid-template-columns: 378px repeat(3, 1fr);
+            }
+          }
+        }
+
+        &-payment {
+          display: flex;
+          flex-direction: column;
+          gap: 16px;
+          margin-bottom: 57px;
+
+          &__label {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            cursor: pointer;
+
+            &-radio {
+
+              & input {
+                position: absolute;
+                opacity: 0;
+
+                &:checked + .makingOrder-hero__content-making__block-payment__label-radio__custom {
+                  border: 1px solid var(--green);
+                }
+
+                &:checked + .makingOrder-hero__content-making__block-payment__label-radio__custom::after {
+                  opacity: 1;
+                }
+              }
+
+              &__custom {
+                position: relative;
+                @include flex-center;
+                width: 16px;
+                height: 16px;
+                border-radius: 100px;
+                border: 1px solid var(--gray-3);
+                @include transition;
+
+                &::after {
+                  content: '';
+                  position: absolute;
+                  opacity: 0;
+                  width: 10px;
+                  height: 10px;
+                  border-radius: 100px;
+                  background-color: var(--green);
+                  @include transition;
+                }
+              }
+
+
+            }
+
+            & p {
+              margin-bottom: 0;
+              font-family: var(--font-family);
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 125%;
+              color: var(--black-2);
+            }
+          }
+        }
+
+        &-submitButton {
+          width: 232px;
+          margin-bottom: 16px;
+        }
+      }
+    }
+
+    &-decoration {
+      padding: 32px 32px;
+      height: 366px;
+      border-radius: 20px;
+      background-color: var(--white);
+
+      & h3 {
+        margin-bottom: 16px;
+        font-weight: 600;
+        font-size: 20px;
+        line-height: 140%;
+        color: var(--black-2);
+      }
+
+      &__line {
+        display: block;
+        margin-bottom: 24px;
+        width: 100%;
+        height: 1px;
+        background-color: var(--arrow);
+      }
+
+      &__volume {
+        @include flex-betweenCenter;
+        margin-bottom: 16px;
+
+        & p {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 129%;
+          color: var(--black-2);
+
+          &:nth-child(2) {
+            font-weight: 500;
+          }
+        }
+      }
+
+      & .price {
+        font-weight: 600;
+        font-size: 48px;
+        line-height: 112%;
+        color: var(--black);
+      }
+
+      & .discount {
+        margin-bottom: 24px;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 122%;
+        text-decoration: line-through;
+        color: var(--gray);
+      }
+
+      &__form {
+
+        & label {
+
+          & p {
+            margin-bottom: 10px;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 129%;
+            color: var(--black-2);
+          }
+
+          & input {
+            width: 100%;
+            padding: 12px 17px;
+            border-radius: 8px;
+            border: 1px dashed var(--arrow);
+            background-color: var(--background);
+            font-family: var(--font-family);
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 143%;
+            letter-spacing: 0.02em;
+            color: #373935;
+
+            &::placeholder {
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 143%;
+              letter-spacing: 0.02em;
+              color: #373935;
+            }
+          }
+        }
+
+        & button {
+          width: 100%;
+        }
+      }
+    }
+  }
+}
+
+.makingOrder__pop-up {
+  position: fixed;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -1;
+  transition: all 0.5s ease;
+
+  &.active {
+    opacity: 1;
+    pointer-events: all;
+    z-index: 10;
+  }
+
+  &__content {
+    margin: auto;
+    padding: 52px;
+    max-width: 872px;
+    border-radius: 20px;
+    background-color: var(--white);
+    background-image: url(../img/makingOrder/makingOrder-popUp-img.png);
+    background-repeat: no-repeat;
+    background-position: center right;
+
+    & h2 {
+      margin-bottom: 32px;
+      font-weight: 600;
+      font-size: 32px;
+      line-height: 125%;
+      color: var(--black);
+    }
+
+    & p.descr1 {
+      position: relative;
+      padding-left: 60px;
+      margin-bottom: 32px;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 140%;
+      color: var(--black-2);
+
+      &::after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        width: 44px;
+        height: 44px;
+        background-image: url(../img/makingOrder/makinOrder-box-img.svg);
+      }
+    }
+
+    & p.descr2 {
+      margin-bottom: 32px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 143%;
+      color: var(--gray);
+    }
+
+    & button {
+      width: 232px;
+    }
+  }
+}
+
+/* Гарантия */
+
+.warranty-hero {
+  padding-bottom: 52px;
+
+  &__content {
+    padding: 52px;
+    border-radius: 20px;
+    background-color: var(--white);
+
+    &-img {
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 32px;
+      height: 600px;
+      border-radius: 20px;
+
+      &::after {
+        content: '';
+        position: absolute;
+        width: 400px;
+        height: 400px;
+        bottom: 0;
+        right: 0;
+        background-image: url(../img/warranty/Group-1239.png);
+      }
+
+      & img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      & h3 {
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 144%;
+        color: var(--black-2);
+      }
+
+      & p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 162%;
+        color: var(--black-2);
+      }
+
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+
+        &-item {
+          position: relative;
+          padding-left: 23px;
+
+          &::after {
+            content: '';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            width: 4px;
+            height: 4px;
+            border-radius: 100px;
+            background-color: var(--black-2);
+          }
         }
       }
     }
@@ -2486,7 +2981,7 @@
                 top: 50%;
                 right: 17px;
                 transform: translateY(-50%);
-                background-image: url(./img/installmentPlan/arrow.svg);
+                background-image: url(../img/installmentPlan/arrow.svg);
               }
             }
           }
@@ -2594,6 +3089,7 @@
       &-answer {
 
         &__descr {
+          padding-bottom: 24px;
           font-weight: 400;
           font-size: 16px;
           line-height: 162%;
@@ -2772,6 +3268,742 @@
 
 }
 
+
+.choice-hero {
+  padding-bottom: 52px;
+
+  &__container {
+    padding: 102px 15px;
+    border-radius: 20px;
+    background-color: var(--white);
+  }
+
+  &__descr {
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 162%;
+    text-align: center;
+    color: var(--black-2);
+  }
+
+  &__content {
+    max-width: 530px;
+    margin: auto;
+
+    &-devices {
+      &__selector {
+        margin-bottom: 18px;
+
+        &-device {
+          @include flex-center;
+          flex-direction: column;
+          gap: 11px;
+          cursor: pointer;
+
+          & svg {
+            stroke: var(--gray-3);
+            @include transition;
+          }
+
+          &__descr {
+            font-family: var(--third-family);
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 157%;
+            text-align: center;
+            color: var(--gray-3);
+            @include transition;
+          }
+
+          &.active {
+            & svg {
+              stroke: var(--green);
+            }
+
+            & p {
+              color: var(--green);
+            }
+          }
+        }
+      }
+
+      &__underline {
+        position: relative;
+        display: block;
+        margin-bottom: 28px;
+        width: 100%;
+        height: 1px;
+        background-color: var(--arrow);
+
+        & .moving-line {
+          position: absolute;
+          height: 100%;
+          width: 50%; /* Ширина одной секции */
+          left: 0;
+          background-color: var(--gray-3);
+          transition: 0.3s ease;
+        }
+      }
+
+      &__forms {
+        position: relative;
+
+        &-form {
+          position: absolute;
+          width: 100%;
+          opacity: 0;
+          pointer-events: none;
+          @include transition;
+
+          &.active {
+            opacity: 1;
+            pointer-events: all;
+          }
+
+          &__selects {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 32px;
+
+            &-label {
+              position: relative;
+              width: 100%;
+
+              & select {
+                -webkit-appearance: none;
+                -moz-appearance: none;
+                width: 100%;
+                padding: 13px 17px;
+                border-radius: 8px;
+                border: 1px solid var(--arrow);
+
+                &::placeholder {
+                  font-family: var(--second-family);
+                  font-weight: 400;
+                  font-size: 14px;
+                  line-height: 143%;
+                  color: var(--black);
+                }
+              }
+
+              &::before {
+                content: '';
+                position: absolute;
+                width: 16px;
+                height: 16px;
+                top: 50%;
+                right: 17px;
+                transform: translateY(-50%);
+                background-image: url(../img/installmentPlan/arrow.svg);
+              }
+            }
+          }
+
+          &__descr {
+            margin-bottom: 24px;
+            font-family: var(--font-family);
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 133%;
+            color: var(--gray-2);
+          }
+
+          &__btn {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+
+
+  }
+}
+
+/* Trade-in */
+
+.tradeIn-hero {
+
+  .choice-hero__descr {
+    margin-bottom: 59px
+  }
+
+  .choice-hero__content-devices__selector {
+    @include grid-ColumnsEqually(2);
+  }
+
+  .choice-hero__content-devices__underline {
+    .moving-line {
+      width: 50%;
+    }
+  }
+
+  .choice-hero__content-devices__forms-form__selects {
+    @include grid-ColumnsEqually(2, 16px);
+  }
+
+  &__content-devices__forms-form__benefit {
+    @include flex-betweenCenter;
+    margin-bottom: 24px;
+    padding: 24px 17px;
+    border-radius: 8px;
+    border: 1px solid rgba(70, 166, 66, 0.4);
+    background: rgba(60, 153, 57, 0.08);
+  }
+
+}
+
+.tradeIn__pop-app {
+  position: absolute;
+  padding: 100px 16px 0 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  z-index: -100;
+  pointer-events: none;
+  @include transition;
+
+  &.active {
+    opacity: 1;
+    z-index: 100;
+    pointer-events: all;
+  }
+
+  &__container {
+    position: relative;
+    margin: auto;
+    max-width: 500px;
+    padding: 61px 50px;
+    border-radius: 20px;
+    background-color: var(--white);
+  }
+
+  &__closed {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+  }
+
+  &__content {
+    &-title {
+      margin-bottom: 24px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 125%;
+      color: #1d2023;
+    }
+
+    &-descr1 {
+      margin-bottom: 24px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 129%;
+      color: var(--gray-2);
+
+      & span {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 129%;
+        color: var(--black-2);
+      }
+    }
+
+    &-descr2 {
+      margin-bottom: 24px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 137%;
+      color: var(--black-2);
+    }
+
+    &-form {
+      @include flex-center(20px);
+      flex-direction: column;
+      margin-bottom: 16px;
+
+      & label {
+        width: 100%;
+
+        & input {
+          padding: 13px 17px;
+          width: 100%;
+          border-radius: 8px;
+          border: 1px solid var(--gray-3);
+          font-family: var(--second-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 137%;
+          color: var(--gray-3);
+
+          ::placeholder {
+            font-family: var(--second-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 137%;
+            color: var(--gray-3);
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          &.error {
+            border: 2px solid red;
+          }
+        }
+      }
+
+      &__checkbox {
+        position: relative;
+        padding-left: 32px;
+
+        &-descr {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 150%;
+          color: var(--gray-2);
+
+          & a {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 150%;
+            color: var(--gray-2);
+            text-decoration: underline;
+          }
+        }
+
+        & input {
+          position: absolute;
+          opacity: 0;
+          z-index: -1;
+        }
+
+        & span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          background-image: url(../img/installmentPlan/check-off.png);
+        }
+
+        & input[type="checkbox"]:checked + .tradeIn__pop-app__content-form__checkbox-custom {
+          background-image: url(../img/installmentPlan/check-on.png);
+        }
+      }
+
+      &__btn {
+        width: 100%;
+      }
+    }
+
+    &-btn {
+      width: 100%;
+      border: none;
+      color: var(--dark);
+      background-color: var(--background);
+    }
+  }
+
+}
+
+/* Выкуп техники */
+
+.purchaseEquipment-hero {
+  .choice-hero__descr {
+    margin-bottom: 57px
+  }
+
+  .choice-hero__content-devices__selector-mobile {
+    display: none
+  }
+
+  .choice-hero__content-devices__selector {
+    @include grid-ColumnsEqually(6);
+  }
+
+  .choice-hero__content-devices__underline {
+    .moving-line {
+      width: 17%;
+    }
+  }
+}
+
+/* Ремонт */
+
+.repair-hero {
+
+  padding-bottom: 26px;
+
+  .choice-hero__container {
+    padding: 102px 15px 72px 15px;
+  }
+
+  .choice-hero__descr {
+    margin-bottom: 54px
+  }
+
+  .choice-hero__content-devices {
+
+    &__selector {
+      @include grid-ColumnsEqually(4);
+    }
+
+    &__underline {
+
+      .moving-line {
+        width: 25%;
+      }
+    }
+
+    &__forms-form {
+      overflow: hidden;
+    }
+  }
+
+  &__choice {
+    overflow: hidden;
+    height: 0;
+    transition: all 0.5s ease;
+
+    &.active {
+      height: auto;
+      margin-bottom: 24px;
+    }
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+
+      &__item {
+        @include flex-betweenCenter;
+        padding: 16px 0;
+        border-bottom: 1px solid var(--arrow);
+        gap: 16px;
+
+        & p {
+          font-weight: 400;
+          font-size: 14px;
+          line-height: 129%;
+          color: var(--dark);
+
+          &.price {
+            text-wrap: nowrap;
+            font-weight: 500;
+            color: var(--black-2);
+          }
+        }
+      }
+    }
+  }
+}
+
+.repair-info {
+  padding-bottom: 39px;
+
+  &__content {
+    padding: 24px;
+    border-radius: 20px;
+    background-color: var(--white);
+
+    &-img {
+      overflow: hidden;
+      border-radius: 20px;
+      height: 320px;
+      margin-bottom: 32px;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+        &:nth-child(2) {
+          display: none;
+        }
+      }
+    }
+
+    &-info {
+
+      & h3 {
+        margin-bottom: 24px;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 133%;
+        color: var(--black-2);
+      }
+
+      & p {
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 150%;
+        color: var(--black-2);
+
+        &:not(:last-child) {
+          margin-bottom: 32px;
+        }
+      }
+    }
+  }
+}
+
+.repair__pop-app {
+  position: absolute;
+  padding: 100px 16px 0 16px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  z-index: -100;
+  pointer-events: none;
+  @include transition;
+
+  &.active {
+    opacity: 1;
+    z-index: 100;
+    pointer-events: all;
+  }
+
+  &__container {
+    position: relative;
+    margin: auto;
+    max-width: 500px;
+    padding: 61px 50px;
+    border-radius: 20px;
+    background-color: var(--white);
+  }
+
+  &__closed {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+  }
+
+  &__content {
+    &-title {
+      margin-bottom: 24px;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 125%;
+      color: #1d2023;
+    }
+
+    &-descr1 {
+      margin-bottom: 24px;
+      font-weight: 400;
+      font-size: 14px;
+      line-height: 129%;
+      color: var(--gray-2);
+
+      & span {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 129%;
+        color: var(--black-2);
+      }
+    }
+
+    &-descr2 {
+      margin-bottom: 24px;
+      font-weight: 400;
+      font-size: 16px;
+      line-height: 137%;
+      color: var(--black-2);
+    }
+
+    &-form {
+      @include flex-center(20px);
+      flex-direction: column;
+      margin-bottom: 16px;
+
+      & label {
+        width: 100%;
+
+        & input {
+          padding: 13px 17px;
+          width: 100%;
+          border-radius: 8px;
+          border: 1px solid var(--gray-3);
+          font-family: var(--second-family);
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 137%;
+          color: var(--gray-3);
+
+          ::placeholder {
+            font-family: var(--second-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 137%;
+            color: var(--gray-3);
+          }
+
+          &:focus {
+            outline: none;
+          }
+
+          &.error {
+            border: 2px solid red;
+          }
+        }
+      }
+
+      &__checkbox {
+        position: relative;
+        padding-left: 32px;
+
+        &-descr {
+          font-weight: 400;
+          font-size: 12px;
+          line-height: 150%;
+          color: var(--gray-2);
+
+          & a {
+            font-weight: 400;
+            font-size: 12px;
+            line-height: 150%;
+            color: var(--gray-2);
+            text-decoration: underline;
+          }
+        }
+
+        & input {
+          position: absolute;
+          opacity: 0;
+          z-index: -1;
+        }
+
+        & span {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 20px;
+          height: 20px;
+          background-image: url(../img/installmentPlan/check-off.png);
+        }
+
+        & input[type="checkbox"]:checked + .repair__pop-app__content-form__checkbox-custom {
+          background-image: url(../img/installmentPlan/check-on.png);
+        }
+      }
+
+      &__btn {
+        width: 100%;
+      }
+    }
+
+    &-btn {
+      width: 100%;
+      border: none;
+      color: var(--dark);
+      background-color: var(--background);
+    }
+  }
+
+}
+
+/* Контакты */
+
+.contacts-hero {
+  padding-top: 20px;
+  padding-bottom: 102px;
+
+  &__content {
+    display: grid;
+    grid-template-columns: 370px auto;
+    gap: 24px;
+
+    &-info {
+
+      &__block {
+
+        &:not(:last-child) {
+          margin-bottom: 32px;
+        }
+
+        & h3 {
+          margin-bottom: 18px;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 100%;
+          color: var(--black);
+        }
+
+        & p {
+          display: flex;
+          gap: 8px;
+          font-weight: 400;
+          font-size: 16px;
+          line-height: 150%;
+          color: var(--dark);
+        }
+
+        & a.tel {
+          display: block;
+          margin-bottom: 12px;
+          font-weight: 600;
+          font-size: 22px;
+          line-height: 127%;
+          color: var(--green);
+          @include transition;
+
+          &:hover {
+            opacity: 0.7;
+          }
+        }
+
+        &-social {
+          display: flex;
+          gap: 8px;
+
+          & button {
+            @include flex-center(8px);
+            padding: 8px 14px;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 157%;
+            color: var(--black-2);
+            background-color: var(--background);
+            @include transition;
+
+            & svg {
+              fill: var(--dark);
+              @include transition;
+            }
+
+            &:hover {
+              color: var(--background);
+              background-color: var(--dark);
+
+              & svg {
+                fill: var(--background);
+              }
+            }
+          }
+        }
+      }
+    }
+
+    &-map {
+      overflow: hidden;
+      height: 481px;
+      border-radius: 20px;
+    }
+  }
+
+
+}
+
+
+
 @media (max-width: 1100px) {
 
   .main-header {
@@ -2811,6 +4043,37 @@
     }
   }
 
+  /* Корзина */
+
+  .basket-hero {
+
+    &__content {
+
+      &-products {
+
+        &__list {
+
+          &-item {
+            padding: 52px 20px;
+          }
+        }
+      }
+    }
+  }
+
+  /* Оформление заказа */
+
+  .makingOrder-hero {
+
+    .makingOrder-hero__content-making__block-form {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .makingOrder-hero__content-making__block-delivery__address {
+      width: 100%;
+    }
+  }
+
 }
 
 @media (max-width: 1024px) {
@@ -2825,6 +4088,34 @@
   .catalog-about {
     &__content {
       @include grid-ColumnsEqually(2, 60px);
+    }
+  }
+
+  /* Гарантия */
+
+  .warranty-hero {
+
+    &__content {
+
+      &-img {
+        height: auto;
+      }
+    }
+  }
+
+  /* Ремонт */
+
+  .repair-info__content-img {
+    height: auto;
+  }
+
+  /* Контакты */
+
+  .contacts-hero {
+    &__content {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 16px;
     }
   }
 }
@@ -3083,6 +4374,8 @@
     }
   }
 
+  /* Рассрочка */
+
   .installmentPlan-hero {
 
     &__container {
@@ -3102,6 +4395,13 @@
       &.active {
         height: 190px;
       }
+    }
+  }
+
+  .choice-hero {
+
+    &__container {
+      padding: 24px;
     }
   }
 
@@ -3301,6 +4601,10 @@
         &__section {
           &-images {
             @include grid-ColumnsEqually(1, 8px);
+
+            & img {
+              width: 100% !important;
+            }
           }
         }
 
@@ -3318,6 +4622,7 @@
 
               }
             }
+
           }
         }
       }
@@ -3384,6 +4689,175 @@
     }
   }
 
+  /* Корзина */
+
+  .basket-hero {
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      &-products {
+
+        &__list {
+
+          &-item {
+            position: relative;
+            padding: 24px 24px;
+            flex-direction: column;
+
+            & img {
+              margin-right: 0;
+              margin-bottom: 32px;
+            }
+
+            &__article {
+
+              &-top {
+
+                & h3 {
+                  max-width: 100%;
+                }
+
+                &__nav {
+
+                  & p {
+                    position: absolute;
+                    bottom: 32px;
+                    left: 24px;
+                  }
+
+                  & button {
+                    position: absolute;
+                    top: 20px;
+                    right: 20px;
+                    background-color: inherit;
+                  }
+
+
+                }
+              }
+
+              &-volume {
+                padding: 12px 6px;
+                width: 170px;
+                margin-left: auto;
+                justify-content: space-between;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  /* Оформление заказа */
+
+  .makingOrder-hero {
+
+    padding-bottom: 72px;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      &-making {
+        padding: 24px;
+
+        &__block {
+
+          &-form {
+            display: flex;
+            flex-direction: column;
+          }
+
+          &-btns {
+            display: flex;
+            flex-direction: column;
+          }
+
+          &-delivery {
+            display: flex;
+            flex-direction: column-reverse;
+            gap: 32px;
+
+            &__map {
+              position: relative;
+            }
+
+            &.active {
+              .makingOrder-hero__content-making__block-delivery__address {
+                position: relative;
+                opacity: 1;
+                pointer-events: all;
+
+                .makingOrder-hero__content-making__block-form {
+                  @include grid-ColumnsEqually(2, 16px);
+
+                  & label:nth-child(1), & label:nth-child(4) {
+                    grid-column: span 2;
+                  }
+                }
+              }
+            }
+          }
+
+          &-submitButton {
+            width: 100%;
+          }
+        }
+      }
+
+      &-decoration {
+        height: 343px;
+
+        &__line:nth-child(6) {
+          margin-bottom: 3px;
+        }
+      }
+    }
+
+
+  }
+
+  .makingOrder__pop-up {
+
+    &__content {
+      padding: 24px;
+      background-image: none;
+    }
+  }
+
+  /* Гарантия */
+
+  .warranty-hero {
+    padding-bottom: 30px;
+
+    &__content {
+      padding: 24px;
+
+      &-img {
+        height: 231px;
+
+        &::after {
+          content: none;
+        }
+      }
+    }
+  }
+
+  /* Контакты */
+
+  .contacts-hero {
+    padding-top: 0px;
+    padding-bottom: 72px;
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+      gap: 54px;
+    }
+  }
 }
 
 @media (max-width: 540px) {
@@ -3544,7 +5018,6 @@
     }
   }
 
-
   .main-header {
     margin-bottom: 31px;
 
@@ -3563,9 +5036,11 @@
     }
   }
 
+  /* Рассрочка */
+
   .installmentPlan-hero {
 
-    padding-bottom: 82px;
+    padding-bottom: 65px;
 
     &__container {
       padding: 31px 24px;
@@ -3603,6 +5078,105 @@
   .installmentPlan__pop-app {
     &__container {
       padding: 50px 20px;
+    }
+  }
+
+
+  .choice-hero {
+
+    &__container {
+      padding: 31px 24px;
+    }
+
+    &__descr {
+      margin-bottom: 48px;
+    }
+  }
+
+  /* Trade-In */
+
+  .tradeIn-hero {
+    padding-bottom: 31px;
+
+    .choice-hero__descr {
+      margin-bottom: 48px;
+    }
+
+    .choice-hero__content-devices__forms-form__selects {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .tradeIn__pop-app {
+    &__container {
+      padding: 50px 20px;
+    }
+  }
+
+  /* Выбор техники */
+
+  .purchaseEquipment-hero {
+    .choice-hero__content-devices__underline {
+      display: none;
+    }
+
+    .choice-hero__content-devices {
+      position: relative;
+
+      &__selector-mobile {
+        position: relative;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 16px;
+        width: 100%;
+        padding: 13px 17px;
+        border-radius: 8px;
+        border: 1px solid var(--arrow);
+
+        &::before {
+          content: '';
+          position: absolute;
+          width: 16px;
+          height: 16px;
+          top: 15px;
+          right: 17px;
+          background-image: url(../img/installmentPlan/arrow.svg);
+        }
+      }
+
+      &__selector {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid var(--arrow);
+        background-color: var(--white);
+        transition: all 0.5s ease;
+        opacity: 0;
+        pointer-events: none;
+        z-index: -1;
+
+        &.active {
+          opacity: 1;
+          pointer-events: all;
+          z-index: 5;
+        }
+
+        &-device {
+          flex-direction: row;
+          justify-content: flex-start;
+          gap: 6px;
+          padding: 15px 10px;
+
+          & svg {
+            width: 20px;
+            height: 20px;
+          }
+        }
+      }
     }
   }
 
@@ -3704,5 +5278,73 @@
         }
       }
     }
+  }
+
+  /* Корзина */
+
+  .basket-hero {
+    padding-top: 6px;
+    padding-bottom: 73px;
+
+    &__content {
+
+      &-decoration {
+        height: auto;
+
+        &__line {
+
+          &:nth-child(6) {
+            margin-bottom: 3px;
+          }
+        }
+
+        &__form {
+
+          & button {
+            width: 83%;
+          }
+        }
+      }
+    }
+  }
+
+  /* Ремонт */
+
+  .repair-hero {
+
+    .choice-hero__container {
+      padding: 32px 15px 40px 15px;
+    }
+
+    .choice-hero__descr {
+      margin-bottom: 31px;
+    }
+
+    .choice-hero__content-devices__forms-form {
+      padding: 0 10px;
+    }
+  }
+
+  .repair-info {
+
+    &__content {
+
+      &-img {
+        height: 240px;
+        border-radius: 12px;
+
+        & img:nth-child(1) {
+         display: none;
+        }
+
+        & img:nth-child(2) {
+         display: block;
+        }
+      }
+    }
+  }
+
+  .repair__pop-app__container {
+    padding: 50px 20px;
   }
 }
