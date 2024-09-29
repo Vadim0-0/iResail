@@ -61,7 +61,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
-
 /* Header - menu-mobile - открытие закрытие  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -125,6 +124,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 });
+
 
 
 /* Главная странциа - hero */
@@ -361,7 +361,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Инициализация начального состояния
   updateActiveCard(currentIndex);
 });
-
 
 /* Главная странциа - stocks */
 
@@ -893,6 +892,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
 /* Карточка товара - прибавление значения */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1149,6 +1149,8 @@ document.addEventListener("DOMContentLoaded", function () {
   updateProgress();
 });
 
+
+
 /* Корзина - изменение значения в поле */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1181,6 +1183,230 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 
+/* Оформление заказа - карта */
+
+document.addEventListener("DOMContentLoaded", function () {
+  ymaps.ready(init);
+
+  function init() {
+      // Создаем карту, центрированную на начальной точке
+      var map = new ymaps.Map("map", {
+          center: [55.751574, 37.573856], // Москва
+          zoom: 10
+      });
+
+      // Добавляем маркеры на карту
+      var places = [
+          {
+              coords: [55.751574, 37.573856],
+              name: 'Красная площадь',
+              description: 'Одна из самых известных площадей в мире.'
+          },
+          {
+              coords: [55.752023, 37.617499],
+              name: 'Мавзолей Ленина',
+              description: 'Мавзолей Владимира Ленина на Красной площади.'
+          },
+          {
+              coords: [55.757777, 37.615631],
+              name: 'Большой театр',
+              description: 'Национальный театр оперы и балета.'
+          }
+      ];
+
+      // Функция для создания и добавления маркера
+      function addPlace(place) {
+          var placemark = new ymaps.Placemark(place.coords, {
+              // Устанавливаем контент для балуна (всплывающего окна)
+              balloonContentHeader: `<strong>${place.name}</strong>`,
+              balloonContentBody: `<p>${place.description}</p>`,
+              balloonContentFooter: 'Нажмите на маркер для отображения информации',
+              hintContent: place.name // Подсказка при наведении
+          }, {
+              preset: 'islands#icon',
+              iconColor: '#0095b6'
+          });
+
+          // Добавляем событие на клик по метке
+          placemark.events.add('click', function () {
+              map.setCenter(place.coords, 14, {
+                  checkZoomRange: true
+              });
+              // Открываем балун на текущем объекте
+              placemark.balloon.open();
+          });
+
+          // Добавляем метку на карту
+          map.geoObjects.add(placemark);
+      }
+
+      // Добавляем все места на карту
+      places.forEach(addPlace);
+  }
+});
+
+/* Оформление заказа - отображение блоков */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const pickupBtn = document.getElementById('pickup');
+  const addressBtn = document.getElementById('address');
+  const mapBlock = document.querySelector('.makingOrder-hero__content-making__block-delivery__map');
+  const addressBlock = document.querySelector('.makingOrder-hero__content-making__block-delivery__address');
+  const deliveryBlock = document.querySelector('.makingOrder-hero__content-making__block-delivery');
+
+  // Функция для обновления высоты блока
+  function updateDeliveryBlockHeight() {
+      const activeBlock = deliveryBlock.querySelector('.active');
+      if (activeBlock) {
+          deliveryBlock.style.height = activeBlock.offsetHeight + 'px';
+      } else {
+          deliveryBlock.style.height = '0px';
+      }
+  }
+
+  // Основной код для больших экранов
+  function initLargeScreenListeners() {
+      // Обработка нажатия кнопки Самовывоз
+      pickupBtn.addEventListener('click', largeScreenPickupHandler);
+
+      // Обработка нажатия кнопки Доставка
+      addressBtn.addEventListener('click', largeScreenAddressHandler);
+
+      // Инициализация высоты блока при загрузке страницы
+      updateDeliveryBlockHeight();
+  }
+
+  function largeScreenPickupHandler() {
+      pickupBtn.classList.add('active');
+      addressBtn.classList.remove('active');
+      mapBlock.classList.add('active');
+      addressBlock.classList.remove('active');
+
+      // Обновляем высоту с небольшой задержкой для того, чтобы классы применились корректно
+      setTimeout(updateDeliveryBlockHeight, 0);
+  }
+
+  function largeScreenAddressHandler() {
+      addressBtn.classList.add('active');
+      pickupBtn.classList.remove('active');
+      mapBlock.classList.remove('active');
+      addressBlock.classList.add('active');
+
+      // Обновляем высоту с небольшой задержкой для того, чтобы классы применились корректно
+      setTimeout(updateDeliveryBlockHeight, 0);
+  }
+
+  // Код для экранов меньше 768px
+  function initSmallScreenListeners() {
+      // Удаляем классы при нажатии на кнопки для мобильной версии
+      pickupBtn.addEventListener('click', smallScreenPickupHandler);
+      addressBtn.addEventListener('click', smallScreenAddressHandler);
+  }
+
+  function smallScreenPickupHandler() {
+      pickupBtn.classList.add('active');
+      addressBtn.classList.remove('active');
+      deliveryBlock.classList.remove('active');
+  }
+
+  function smallScreenAddressHandler() {
+      addressBtn.classList.add('active');
+      pickupBtn.classList.remove('active');
+      deliveryBlock.classList.add('active');
+  }
+
+  // Функция для очистки всех слушателей, чтобы не было конфликтов
+  function removeAllListeners() {
+      pickupBtn.removeEventListener('click', largeScreenPickupHandler);
+      addressBtn.removeEventListener('click', largeScreenAddressHandler);
+      pickupBtn.removeEventListener('click', smallScreenPickupHandler);
+      addressBtn.removeEventListener('click', smallScreenAddressHandler);
+  }
+
+  // Проверка ширины экрана
+  function checkScreenWidth() {
+      const screenWidth = window.innerWidth;
+
+      // Очищаем слушатели перед инициализацией новых
+      removeAllListeners();
+
+      if (screenWidth < 768) {
+          // Код для маленьких экранов
+          deliveryBlock.style.height = 'auto';  // Убираем контроль высоты
+          initSmallScreenListeners();
+      } else {
+          // Код для больших экранов
+          initLargeScreenListeners();
+          setTimeout(updateDeliveryBlockHeight, 0); // Устанавливаем высоту при больших экранах
+      }
+  }
+
+  // Инициализация кода при загрузке страницы
+  checkScreenWidth();
+
+  // Обработка изменения размера экрана
+  window.addEventListener('resize', checkScreenWidth);
+});
+
+/* Оформление заказа - input */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const nameInput = document.getElementById('makingOrder-name');
+  const telInput = document.getElementById('makingOrder-tel');
+  const emailInput = document.getElementById('makingOrder-email');
+  const adressInput = document.getElementById('makingOrder-adress');
+  const floorInput = document.getElementById('makingOrder-floor');
+
+  // Добавляем слушатель на ввод для телефона
+  telInput.addEventListener('focus', function () {
+    // Если поле пустое, добавляем +7 при фокусе
+    if (!this.value) {
+        this.value = '+7 ';
+    }
+  });
+
+  telInput.addEventListener('input', function () {
+    // Убираем все, кроме цифр и пробелов
+    this.value = this.value.replace(/[^\d\s+]/g, ''); // Убедитесь, что + остается
+
+    // Проверяем, начинается ли номер с +7 или 7
+    if (this.value.length > 0) {
+        if (!this.value.startsWith('7') && !this.value.startsWith('+7')) {
+            this.value = this.value.replace(/^/, '+7'); // Добавляем +7 в начало, если номер не начинается с 7 или +7
+        }
+    }
+  });
+
+  // Добавляем слушатель на ввод для имени
+  nameInput.addEventListener('input', function () {
+      this.value = this.value.replace(/[^а-яА-ЯёЁa-zA-Z\s]/g, ''); // Разрешаем только буквы и пробелы
+  });
+
+  document.getElementById('makingOrder-hero__submitButton').addEventListener('click', function () {
+      // Функция для проверки и окрашивания рамки
+      function validateInput(input, regex = null) {
+          if (!input.value.trim() || (regex && !regex.test(input.value))) {
+              input.style.border = '1px solid red';
+          } else {
+              input.style.border = '';
+          }
+      }
+
+      // Валидация полей
+      validateInput(nameInput); // Проверка имени
+      validateInput(telInput, /^\+7 \d{10}$/);  // Проверка телефона
+      validateInput(emailInput, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);    // Проверка email
+      validateInput(adressInput); // Проверка адреса
+      validateInput(floorInput, /^[1-9]\d*$/); // Проверка этажа (должен быть положительным числом)
+
+      // Проверка на пустоту для этажей
+      if (!floorInput.value.trim()) {
+          floorInput.style.border = '1px solid red'; // Окрашиваем в красный, если поле пустое
+      } else {
+          floorInput.style.border = ''; // Убираем красный, если заполнено
+      }
+  });
+});
 
 
 /* СТраница Рассрочка */
@@ -1226,19 +1452,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 /* Секция - частые вопросы */
 
-document.querySelectorAll('.questions__content-faq__item-header').forEach(header => {
-  header.addEventListener('click', () => {
+document.addEventListener('DOMContentLoaded', function() {
+  // Получаем все элементы заголовков FAQ
+  const faqHeaders = document.querySelectorAll('.questions__content-faq__item-header');
+
+  faqHeaders.forEach(header => {
+    // Добавляем обработчик события клика на каждый заголовок
+    header.addEventListener('click', function() {
+      // Получаем родительский элемент FAQ item
       const faqItem = header.parentElement;
+      // Получаем блок с ответом
+      const answer = faqItem.querySelector('.questions__content-faq__item-answer');
 
-      // Закрыть все остальные блоки
-      document.querySelectorAll('.questions__content-faq__item').forEach(item => {
-          if (item !== faqItem) {
-              item.classList.remove('active');
-          }
-      });
+      // Если блок уже открыт (класс active), то сворачиваем его
+      if (faqItem.classList.contains('active')) {
+        faqItem.style.height = `${header.offsetHeight}px`; // Ставим высоту только заголовка
+        faqItem.classList.remove('active');
+      } else {
+        // Закрываем все остальные блоки, если нужно сделать аккордеон
+        document.querySelectorAll('.questions__content-faq__item.active').forEach(activeItem => {
+          activeItem.style.height = `${activeItem.querySelector('.questions__content-faq__item-header').offsetHeight}px`;
+          activeItem.classList.remove('active');
+        });
 
-      // Переключить активное состояние для текущего блока
-      faqItem.classList.toggle('active');
+        // Получаем полную высоту: высота заголовка + высота ответа
+        const fullHeight = header.offsetHeight + answer.scrollHeight;
+        // Задаем новую высоту блоку FAQ item
+        faqItem.style.height = `${fullHeight}px`;
+        // Добавляем класс active
+        faqItem.classList.add('active');
+      }
+    });
+  });
+
+  // Устанавливаем начальную высоту для всех блоков FAQ item
+  document.querySelectorAll('.questions__content-faq__item').forEach(item => {
+    const header = item.querySelector('.questions__content-faq__item-header');
+    item.style.height = `${header.offsetHeight}px`;
   });
 });
 
@@ -1302,6 +1552,233 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
+
+
+/* Trade-in & Выкуп техники & Ремонт - переключение формы */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const devices = document.querySelectorAll('.choice-hero__content-devices__selector-device');
+  const movingLine = document.getElementById('choice-moving-line');
+  const formsContainer = document.querySelector('.choice-hero__content-devices__forms');
+  const contents = document.querySelectorAll('.choice-hero__content-devices__forms-form');
+
+  // Функция для установки динамической высоты контейнера
+  function updateContainerHeight(activeContent) {
+      const contentHeight = activeContent.offsetHeight; // Получаем высоту активного блока
+      formsContainer.style.height = `${contentHeight}px`; // Устанавливаем высоту контейнера
+  }
+
+  // Функция для перемещения линии
+  function moveLine(index) {
+      const deviceWidth = devices[0].offsetWidth; // Ширина одного устройства
+      const movingLineWidth = movingLine.offsetWidth; // Ширина линии
+      const containerWidth = devices.length * deviceWidth; // Общая ширина всех устройств
+
+      const availableWidth = containerWidth - movingLineWidth; // Доступная ширина для перемещения
+      const moveDistance = (availableWidth / (devices.length - 1)) * index; // Вычисляем расстояние перемещения
+      movingLine.style.left = `${moveDistance}px`; // Перемещаем линию в пикселях
+  }
+
+  devices.forEach((device, index) => {
+      device.addEventListener('click', () => {
+          // Удаляем активный класс у всех устройств
+          devices.forEach(d => d.classList.remove('active'));
+          // Добавляем активный класс к нажатому устройству
+          device.classList.add('active');
+
+          // Перемещаем внутреннюю линию
+          moveLine(index);
+
+          // Отображаем соответствующий контент
+          contents.forEach(content => content.classList.remove('active'));
+          const targetContent = document.getElementById(device.getAttribute('data-target'));
+          targetContent.classList.add('active');
+
+          // Обновляем высоту контейнера
+          updateContainerHeight(targetContent);
+      });
+  });
+
+  // Устанавливаем начальную высоту контейнера
+  const initialActiveContent = document.querySelector('.choice-hero__content-devices__forms-form.active');
+  if (initialActiveContent) {
+      updateContainerHeight(initialActiveContent);
+  }
+});
+
+
+/* Trade-in - форма */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('tradeIn-form');
+  const nameInput = document.getElementById('tradeIn__pop-app__name');
+  const phoneInput = document.getElementById('tradeIn__pop-app__tel');
+  const checkbox = document.getElementById('checkbox');
+
+  // Устанавливаем +7 автоматически при фокусе на поле телефона
+  phoneInput.addEventListener('focus', function () {
+      if (!phoneInput.value) {
+          phoneInput.value = '+7';
+      }
+  });
+
+  // Блокируем ввод любых символов кроме цифр после +7
+  phoneInput.addEventListener('input', function () {
+      let numbersOnly = phoneInput.value.replace(/[^\d]/g, '');  // Удаляем все, кроме цифр
+
+      if (!numbersOnly.startsWith('7')) {
+          numbersOnly = '7' + numbersOnly.substring(1);
+      }
+
+      // Ограничиваем количество символов до 11 (1 символ 7 + 10 цифр)
+      if (numbersOnly.length > 11) {
+          numbersOnly = numbersOnly.substring(0, 11);
+      }
+
+      phoneInput.value = '+7' + numbersOnly.substring(1);  // Возвращаем значение с форматом +7
+  });
+
+  // Валидация формы перед отправкой
+  form.addEventListener('submit', function (event) {
+      let isValid = true;
+
+      // Проверка имени: поле не должно быть пустым и не должно содержать цифры
+      const nameRegex = /^[А-Яа-яЁёA-Za-z\s]+$/;  // Регулярное выражение для проверки только букв и пробелов
+      if (nameInput.value.trim() === '' || !nameRegex.test(nameInput.value)) {
+          nameInput.classList.add('error');  // Добавляем красный бордер
+          isValid = false;
+      } else {
+          nameInput.classList.remove('error');
+      }
+
+      // Проверка телефона: точно 12 символов (+7 и 10 цифр)
+      const phoneRegex = /^\+7\d{10}$/;
+      if (!phoneRegex.test(phoneInput.value)) {
+          phoneInput.classList.add('error');  // Добавляем красный бордер
+          isValid = false;
+      } else {
+          phoneInput.classList.remove('error');
+      }
+
+      // Если есть ошибки, отменяем отправку формы
+      if (!isValid) {
+          event.preventDefault();  // Отменяем отправку
+      }
+  });
+});
+
+
+/* Выкуп техники - выьор устройства */
+
+document.addEventListener('DOMContentLoaded', function() {
+  // Находим элементы на странице
+  const mobileButton = document.querySelector('.choice-hero__content-devices__selector-mobile');
+  const deviceButtons = document.querySelectorAll('.choice-hero__content-devices__selector-device');
+  const selectorBlock = document.querySelector('.choice-hero__content-devices__selector');
+
+  // Переключаем класс active при нажатии на mobileButton
+  mobileButton.addEventListener('click', function() {
+      selectorBlock.classList.toggle('active');
+  });
+
+  // Убираем класс active при нажатии на любой элемент с классом choice-hero__content-devices__selector-device
+  deviceButtons.forEach(function(deviceButton) {
+      deviceButton.addEventListener('click', function() {
+          selectorBlock.classList.remove('active');
+      });
+  });
+});
+
+/* Ремонт - появление списка с видом ремонта */
+
+document.addEventListener('DOMContentLoaded', function () {
+  // Функция для инициализации работы с select и choice по id
+  function setupForm(selectId, choiceId, formId) {
+    const selectElement = document.getElementById(selectId);
+    const repairChoiceBlock = document.getElementById(choiceId);
+    const formBlock = document.getElementById(formId);
+
+    // Добавляем обработчик событий на select
+    selectElement.addEventListener('change', function () {
+      // Добавляем класс active
+      repairChoiceBlock.classList.add('active');
+
+      // Получаем высоту repairChoiceBlock
+      const repairChoiceHeight = repairChoiceBlock.scrollHeight;
+
+      // Устанавливаем высоту formBlock
+      formBlock.style.height = `${repairChoiceHeight + 145}px`;
+    });
+  }
+
+  // Инициализируем работу для каждого блока, задавая уникальные ID
+  setupForm('repair-iphone-device', 'repair-choice-iphone', 'repair-form');
+  setupForm('repair-macbook-device', 'repair-choice-macbook', 'repair-form');
+  setupForm('repair-imac-device', 'repair-choice-imac', 'repair-form');
+  setupForm('repair-watch-device', 'repair-choice-watch', 'repair-form');
+
+  // Добавляйте новые вызовы setupForm с новыми ID для дополнительных блоков
+});
+
+/* Ремонт - форма */
+
+document.addEventListener('DOMContentLoaded', function () {
+  const form = document.getElementById('repairForm');
+  const nameInput = document.getElementById('repair__pop-app__name');
+  const phoneInput = document.getElementById('repair__pop-app__tel');
+  const checkbox = document.getElementById('checkbox');
+
+  // Устанавливаем +7 автоматически при фокусе на поле телефона
+  phoneInput.addEventListener('focus', function () {
+      if (!phoneInput.value) {
+          phoneInput.value = '+7';
+      }
+  });
+
+  // Блокируем ввод любых символов кроме цифр после +7
+  phoneInput.addEventListener('input', function () {
+      let numbersOnly = phoneInput.value.replace(/[^\d]/g, '');  // Удаляем все, кроме цифр
+
+      if (!numbersOnly.startsWith('7')) {
+          numbersOnly = '7' + numbersOnly.substring(1);
+      }
+
+      // Ограничиваем количество символов до 11 (1 символ 7 + 10 цифр)
+      if (numbersOnly.length > 11) {
+          numbersOnly = numbersOnly.substring(0, 11);
+      }
+
+      phoneInput.value = '+7' + numbersOnly.substring(1);  // Возвращаем значение с форматом +7
+  });
+
+  // Валидация формы перед отправкой
+  form.addEventListener('submit', function (event) {
+      let isValid = true;
+
+      // Проверка имени: поле не должно быть пустым и не должно содержать цифры
+      const nameRegex = /^[А-Яа-яЁёA-Za-z\s]+$/;  // Регулярное выражение для проверки только букв и пробелов
+      if (nameInput.value.trim() === '' || !nameRegex.test(nameInput.value)) {
+          nameInput.classList.add('error');  // Добавляем красный бордер
+          isValid = false;
+      } else {
+          nameInput.classList.remove('error');
+      }
+
+      // Проверка телефона: точно 12 символов (+7 и 10 цифр)
+      const phoneRegex = /^\+7\d{10}$/;
+      if (!phoneRegex.test(phoneInput.value)) {
+          phoneInput.classList.add('error');  // Добавляем красный бордер
+          isValid = false;
+      } else {
+          phoneInput.classList.remove('error');
+      }
+
+      // Если есть ошибки, отменяем отправку формы
+      if (!isValid) {
+          event.preventDefault();  // Отменяем отправку
+      }
+  });
+});
 
 
 
