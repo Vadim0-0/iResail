@@ -52,9 +52,18 @@ button {
   background-color: var(--green);
   @include transition;
 
+  & svg {
+    stroke: var(--white);
+    @include transition;
+  }
+
   &:hover {
     color: var(--green);
     background-color: var(--white);
+
+    & svg {
+      stroke: var(--green);
+    }
   }
 }
 
