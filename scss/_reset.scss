@@ -103,7 +103,11 @@ hr {
 }
 
 input, select {
-    vertical-align:middle;
-    background-color: inherit;
-    border: none;
+  vertical-align:middle;
+  background-color: inherit;
+  border: none;
+
+  &:focus {
+    outline: none;
+  }
 }
