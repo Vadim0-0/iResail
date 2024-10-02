@@ -711,6 +711,9 @@ input, select {
   background-color: inherit;
   border: none;
 }
+input:focus, select:focus {
+  outline: none;
+}
 
 ::-webkit-scrollbar {
   width: 0;
@@ -766,9 +769,16 @@ button {
   background-color: var(--green);
   transition: all 0.3s ease-in-out;
 }
+.btn-global svg {
+  stroke: var(--white);
+  transition: all 0.3s ease-in-out;
+}
 .btn-global:hover {
   color: var(--green);
   background-color: var(--white);
+}
+.btn-global:hover svg {
+  stroke: var(--green);
 }
 
 .btn-links {
@@ -1297,7 +1307,7 @@ button {
   }
 }
 .footer {
-  padding-bottom: 162px;
+  padding-bottom: 52px;
 }
 .footer-link {
   position: relative;
@@ -5095,6 +5105,827 @@ button {
   border-radius: 20px;
 }
 
+/* Каталог Б/У техника */
+.usedEquipment-products {
+  padding-bottom: 202px;
+}
+.usedEquipment-products .products-content__card {
+  padding-bottom: 20px;
+  height: 220px;
+}
+
+.usedEquipment-catalog {
+  padding-top: 19px;
+}
+.usedEquipment-catalog .catalog-content__products-top {
+  margin-left: auto;
+}
+.usedEquipment-catalog .catalog-content__products-top__filter {
+  justify-content: space-between;
+  width: 100%;
+}
+.usedEquipment-catalog .catalog-content__products-bottom__filter {
+  margin-top: -62px;
+}
+.usedEquipment-catalog .catalog-content__products-bottom__filter-price h4 {
+  margin-bottom: 28px;
+}
+.usedEquipment-catalog .catalog-content__products-bottom__cards-content__list {
+  padding-top: 0;
+}
+.usedEquipment-catalog .catalog-content__products-bottom__cards-content__list-item__sticker {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+}
+.usedEquipment-catalog .catalog-content__products-bottom__cards-content__list-item__sticker .catalog-content__products-bottom__cards-content__list-item__discount {
+  position: relative;
+  display: block;
+  top: 0;
+  left: 0;
+  margin-bottom: 4px;
+}
+.usedEquipment-catalog .catalog-content__products-bottom__cards-content__list-item__sticker .catalog-content__products-bottom__cards-content__list-item__used {
+  padding: 2px 4px;
+  border-radius: 4px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--white);
+  background-color: red;
+}
+
+/* Личный кабинет */
+.personalAccount-main {
+  padding-bottom: 32px;
+}
+.personalAccount-main__content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 24px;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+.personalAccount-main__content h1 {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--black);
+}
+.personalAccount-main__content a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  color: #4a4b49;
+  transition: all 0.3s ease-in-out;
+}
+.personalAccount-main__content a:hover {
+  text-decoration: underline;
+}
+
+.personalAccount-hero {
+  padding-bottom: 72px;
+}
+.personalAccount-hero__content {
+  display: grid;
+  grid-template-columns: 263px auto;
+  gap: 32px;
+}
+.personalAccount-hero__content-btns {
+  height: 262px;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+.personalAccount-hero__content-btns button {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 24px 12px 24px;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--black-2);
+  transition: all 0.3s ease-in-out;
+}
+.personalAccount-hero__content-btns button:first-child {
+  padding-top: 24px;
+}
+.personalAccount-hero__content-btns button:last-child {
+  padding-bottom: 24px;
+}
+.personalAccount-hero__content-btns button svg {
+  stroke: #4a4b49;
+  transition: all 0.3s ease-in-out;
+}
+.personalAccount-hero__content-btns button.active {
+  color: var(--green);
+}
+.personalAccount-hero__content-btns button.active svg {
+  stroke: var(--green);
+}
+.personalAccount-hero__content-bloks {
+  position: relative;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__data {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 32px;
+  border-radius: 20px;
+  background-color: var(--white);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__data.active {
+  pointer-events: all;
+  opacity: 1;
+}
+.personalAccount-hero__content-bloks__data-top {
+  display: flex;
+  align-items: center;
+  padding-bottom: 32px;
+  margin-bottom: 32px;
+  gap: 32px;
+  border-bottom: 1px solid var(--arrow);
+}
+.personalAccount-hero__content-bloks__data-top__info h2 {
+  margin-bottom: 24px;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--black-2);
+}
+.personalAccount-hero__content-bloks__data-top__info p {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 162%;
+  color: var(--black-2);
+}
+.personalAccount-hero__content-bloks__data-bottom {
+  position: relative;
+  overflow: hidden;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__data-bottom__info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.personalAccount-hero__content-bloks__data-bottom__info.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__data-bottom__info-bloks {
+  margin-bottom: 32px;
+}
+.personalAccount-hero__content-bloks__data-bottom__info-bloks h3 {
+  margin-bottom: 6px;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 156%;
+  color: var(--black-2);
+}
+.personalAccount-hero__content-bloks__data-bottom__info-bloks p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--gray);
+}
+.personalAccount-hero__content-bloks__data-bottom__info button {
+  color: var(--green);
+  background-color: var(--white);
+}
+.personalAccount-hero__content-bloks__data-bottom__info button svg {
+  stroke: var(--green);
+  transition: all 0.3s ease-in-out;
+}
+.personalAccount-hero__content-bloks__data-bottom__info button:hover {
+  color: var(--white);
+  background-color: var(--green);
+}
+.personalAccount-hero__content-bloks__data-bottom__info button:hover svg {
+  stroke: var(--white);
+}
+.personalAccount-hero__content-bloks__data-bottom__form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 460px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.personalAccount-hero__content-bloks__data-bottom__form.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__data-bottom__form .double {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.personalAccount-hero__content-bloks__data-bottom__form .double-address {
+  display: grid;
+  grid-template-columns: 301px auto;
+  gap: 16px;
+  margin-top: 16px;
+}
+.personalAccount-hero__content-bloks__data-bottom__form .three {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.personalAccount-hero__content-bloks__data-bottom__form label p {
+  margin-bottom: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--black-2);
+}
+.personalAccount-hero__content-bloks__data-bottom__form label input {
+  width: 100%;
+  padding: 13px 17px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--black-2);
+  border-radius: 8px;
+  border: 1px solid var(--gray-3);
+}
+.personalAccount-hero__content-bloks__data-bottom__form label input::-moz-placeholder {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--gray-3);
+}
+.personalAccount-hero__content-bloks__data-bottom__form label input::placeholder {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--gray-3);
+}
+.personalAccount-hero__content-bloks__data-bottom__form label input:focus {
+  outline: none;
+}
+.personalAccount-hero__content-bloks__data-bottom__form label select {
+  width: 100%;
+  padding: 13px 17px;
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: var(--black-2);
+  border-radius: 8px;
+  border: 1px solid var(--gray-3);
+}
+.personalAccount-hero__content-bloks__data-bottom__form label select::-moz-placeholder {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+}
+.personalAccount-hero__content-bloks__data-bottom__form label select::placeholder {
+  font-family: var(--second-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+}
+.personalAccount-hero__content-bloks__data-bottom__form label select:focus {
+  outline: none;
+}
+.personalAccount-hero__content-bloks__data-bottom__form button {
+  margin-top: 7px;
+  width: 146px;
+}
+.personalAccount-hero__content-bloks__orders {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__orders.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__orders-nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+.personalAccount-hero__content-bloks__orders-nav__search {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+}
+.personalAccount-hero__content-bloks__orders-nav__search label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 274px;
+  padding: 11px 16px;
+  border-radius: 8px 0 0 8px;
+  background-color: var(--white);
+}
+.personalAccount-hero__content-bloks__orders-nav__search label input {
+  width: 100%;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--black-2);
+}
+.personalAccount-hero__content-bloks__orders-nav__search label input::-moz-placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__orders-nav__search label input::placeholder {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__orders-nav__search button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  padding: 12px 17px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 157%;
+  color: var(--gray);
+  border-radius: 0 8px 8px 0;
+  background-color: rgba(150, 150, 150, 0.1);
+  transition: all 0.3s ease-in-out;
+}
+.personalAccount-hero__content-bloks__orders-nav__search button:hover {
+  opacity: 0.7;
+}
+.personalAccount-hero__content-bloks__orders-nav__sorting {
+  position: relative;
+}
+.personalAccount-hero__content-bloks__orders-nav__sorting button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 246px;
+  padding: 10px 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 137%;
+  color: var(--black);
+  border-radius: 8px;
+  background-color: var(--white);
+}
+.personalAccount-hero__content-bloks__orders-nav__sorting-choice {
+  position: absolute;
+  top: -90px;
+  border-radius: 8px;
+  background-color: var(--white);
+  pointer-events: none;
+  opacity: 0;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__orders-nav__sorting-choice.active {
+  top: 50px;
+  pointer-events: all;
+  opacity: 1;
+  z-index: 5;
+}
+.personalAccount-hero__content-bloks__orders-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.personalAccount-hero__content-bloks__orders-list__item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 20px;
+  border: 1px solid var(--white);
+  background-color: var(--white);
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__orders-list__item-collapsed {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  opacity: 0;
+  pointer-events: none;
+}
+.personalAccount-hero__content-bloks__orders-list__item-collapsed.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__orders-list__item-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-info__top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  justify-content: flex-start;
+}
+.personalAccount-hero__content-bloks__orders-list__item-info__top .orders-condition {
+  padding: 4px 12px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 129%;
+  border-radius: 4px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-info__top .orders-condition.confirmed {
+  color: var(--star);
+  background-color: rgba(252, 170, 52, 0.1);
+}
+.personalAccount-hero__content-bloks__orders-list__item-info__top .orders-condition.received {
+  color: var(--green);
+  background-color: rgba(60, 153, 57, 0.1);
+}
+.personalAccount-hero__content-bloks__orders-list__item-info__top .orders-condition.cancelled {
+  color: #ff1c1c;
+  background-color: rgba(255, 28, 28, 0.08);
+}
+.personalAccount-hero__content-bloks__orders-list__item-info__top .orders--date {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: var(--dark);
+}
+.personalAccount-hero__content-bloks__orders-list__item-info .orders-number {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 144%;
+  letter-spacing: 0.01em;
+  color: #1d2023;
+}
+.personalAccount-hero__content-bloks__orders-list__item-img {
+  width: 62px;
+  height: 62px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-right {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 32px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-right__price .orders-status {
+  margin-bottom: 8px;
+  font-family: var(--font-family);
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 186%;
+  text-align: right;
+  color: var(--dark);
+}
+.personalAccount-hero__content-bloks__orders-list__item-right__price .orders-price {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 122%;
+  color: var(--green);
+}
+.personalAccount-hero__content-bloks__orders-list__item-right__price .orders-price span {
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 24px;
+  display: grid;
+  grid-template-columns: 320px auto;
+  gap: 52px;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded .personalAccount-hero__content-bloks__orders-list__item-img {
+  min-width: 62px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__line {
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: var(--arrow);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__left .personalAccount-hero__content-bloks__orders-list__item-info {
+  margin-bottom: 18px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__left-info {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__left-info__block {
+  margin-top: 18px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__left-info__block .title {
+  margin-bottom: 6px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__left-info__block .info {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--black-2);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  max-width: 274px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product a {
+  display: block;
+  margin-bottom: 10px;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 129%;
+  color: #1d2023;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product p {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--green);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product p .currency {
+  font-weight: 500;
+  font-size: 12px;
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product p .quantity {
+  font-weight: 400;
+  color: var(--dark);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 18px;
+  margin-bottom: 18px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-info__block {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-info__block p {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 143%;
+  color: var(--dark);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-info__block p.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 133%;
+  color: var(--green);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-info__block p.price span {
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-btns {
+  margin-top: 18px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-btns__top {
+  display: flex;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-btns__top a {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 133%;
+  color: var(--green);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-btns__top a:hover {
+  text-decoration: underline;
+}
+.personalAccount-hero__content-bloks__orders-list__item.change {
+  border: 1px solid var(--green);
+}
+.personalAccount-hero__content-bloks__bookmarks {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.5s ease;
+}
+.personalAccount-hero__content-bloks__bookmarks.active {
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__bookmarks-nav {
+  margin-bottom: 16px;
+}
+.personalAccount-hero__content-bloks__bookmarks-nav__sorting {
+  position: relative;
+  width: 246px;
+}
+.personalAccount-hero__content-bloks__bookmarks-nav__sorting button {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 16px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  border: 1px solid var(--arrow);
+  border-radius: 8px;
+  color: var(--black);
+  background-color: var(--background);
+  transition: all 0.3s ease-in-out;
+}
+.personalAccount-hero__content-bloks__bookmarks-nav__sorting-choice {
+  position: absolute;
+  top: -80px;
+  width: 100%;
+  border: 1px solid var(--arrow);
+  border-radius: 8px;
+  background-color: var(--background);
+  z-index: -1;
+  opacity: 0;
+  pointer-events: none;
+  transition: top 0.5s ease, opacity 0.5s ease;
+}
+.personalAccount-hero__content-bloks__bookmarks-nav__sorting-choice.active {
+  top: 50px;
+  z-index: 3;
+  opacity: 1;
+  pointer-events: all;
+}
+.personalAccount-hero__content-bloks__bookmarks-nav__sorting-choice button {
+  border: none;
+}
+.personalAccount-hero__content-bloks__bookmarks-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item {
+  position: relative;
+  padding: 24px;
+  border-radius: 20px;
+  background-color: var(--white);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-remove {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  position: absolute;
+  top: 24px;
+  right: 24px;
+  width: 30px;
+  height: 30px;
+  border: 1px solid var(--arrow);
+  border-radius: 100px;
+  background-color: var(--white);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info {
+  display: flex;
+  gap: 24px;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__img {
+  width: 150px;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs {
+  position: relative;
+  width: 261px;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs a {
+  display: block;
+  margin-bottom: 14px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 125%;
+  color: #1d2023;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs p {
+  position: relative;
+  padding-left: 18px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 117%;
+  color: var(--dark);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs p.inStock::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-image: url(../img/personalAccount/bookmarks/check-isStock.svg);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs p.notInStock::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 14px;
+  height: 14px;
+  background-image: url(../img/personalAccount/bookmarks/check-notInStock.svg);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs button {
+  position: absolute;
+  bottom: 0;
+  padding: 8px;
+  border-radius: 8px;
+  background-color: rgba(60, 153, 57, 0.08);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-bottom {
+  position: absolute;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  align-items: flex-end;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-bottom__discount {
+  padding: 2px 4px;
+  margin-right: 6px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 133%;
+  border-radius: 4px;
+  color: var(--white);
+  background-color: #ffab02;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-bottom__prices {
+  margin-right: 16px;
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-bottom__prices p.discount {
+  text-align: right;
+  margin-bottom: 6px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 117%;
+  text-decoration: line-through;
+  color: var(--gray-2);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-bottom__prices p.price {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 100%;
+  color: var(--green);
+}
+.personalAccount-hero__content-bloks__bookmarks-list__item-bottom__prices p.price span {
+  font-weight: 500;
+  color: var(--gray-2);
+}
+
 @media (max-width: 1100px) {
   .main-header__links {
     right: auto;
@@ -5689,6 +6520,10 @@ button {
     display: flex;
     flex-direction: column;
     gap: 54px;
+  }
+  /* Б/У техника */
+  .usedEquipment-catalog .catalog-content__products-bottom__filter {
+    margin-top: 0;
   }
 }
 @media (max-width: 540px) {
