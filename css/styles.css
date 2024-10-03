@@ -977,11 +977,33 @@ button {
   line-height: 100%;
   color: var(--gray);
 }
+.header-bottom__social .basket {
+  position: relative;
+}
 .header-bottom__social .basket a {
   font-weight: 500;
   font-size: 12px;
   line-height: 100%;
   color: var(--black);
+}
+.header-bottom__social .basket .header-bottom__item-value {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  position: absolute;
+  top: -7px;
+  right: 0;
+  width: 21px;
+  height: 16px;
+  border-radius: 100px;
+  border: 2px solid var(--white);
+  background-color: var(--green);
+  font-family: var(--third-family);
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 100%;
+  color: var(--background);
 }
 .header-bottom.active {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
@@ -2421,7 +2443,7 @@ button {
 .catalog-content__products-bottom__filter-price .price-slider {
   -webkit-appearance: none;
   -moz-appearance: none;
-       appearance: none;
+  appearance: none;
   position: absolute;
   width: 100%;
   height: 5px;
@@ -4055,7 +4077,7 @@ button {
 }
 .warranty-hero__content-img img {
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
   width: 100%;
   height: 100%;
 }
@@ -4865,7 +4887,7 @@ button {
   width: 100%;
   height: 100%;
   -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .repair-info__content-img img:nth-child(2) {
   display: none;
@@ -5231,7 +5253,6 @@ button {
 }
 .personalAccount-hero__content-bloks {
   position: relative;
-  transition: all 0.5s ease;
 }
 .personalAccount-hero__content-bloks__data {
   position: absolute;
@@ -5248,6 +5269,7 @@ button {
 .personalAccount-hero__content-bloks__data.active {
   pointer-events: all;
   opacity: 1;
+  z-index: 1;
 }
 .personalAccount-hero__content-bloks__data-top {
   display: flex;
@@ -5333,6 +5355,7 @@ button {
 .personalAccount-hero__content-bloks__data-bottom__form.active {
   opacity: 1;
   pointer-events: all;
+  z-index: 1;
 }
 .personalAccount-hero__content-bloks__data-bottom__form .double {
   display: grid;
@@ -5432,7 +5455,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 24px;
+  margin-bottom: 18px;
 }
 .personalAccount-hero__content-bloks__orders-nav__search {
   display: flex;
@@ -5473,6 +5496,7 @@ button {
   justify-content: center;
   align-items: center;
   gap: 0px;
+  text-wrap: nowrap;
   padding: 12px 17px;
   font-weight: 400;
   font-size: 14px;
@@ -5530,6 +5554,7 @@ button {
   transition: all 0.5s ease;
 }
 .personalAccount-hero__content-bloks__orders-list__item-collapsed {
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -5542,6 +5567,12 @@ button {
 .personalAccount-hero__content-bloks__orders-list__item-collapsed.active {
   opacity: 1;
   pointer-events: all;
+}
+.personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-img {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 .personalAccount-hero__content-bloks__orders-list__item-info {
   display: flex;
@@ -5699,6 +5730,9 @@ button {
 .personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product p .quantity {
   font-weight: 400;
   color: var(--dark);
+}
+.personalAccount-hero__content-bloks__orders-list__item-expanded__right-top .personalAccount-hero__content-bloks__orders-list__item-right__price .orders-status {
+  display: none;
 }
 .personalAccount-hero__content-bloks__orders-list__item-expanded__right-info {
   display: flex;
@@ -5989,6 +6023,80 @@ button {
     grid-template-columns: auto auto;
     gap: 16px;
   }
+  /* Личный кабинет */
+  .personalAccount-hero__content-bloks__orders-nav {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+  }
+  .personalAccount-hero__content-bloks__orders-nav__sorting {
+    align-self: flex-end;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-img {
+    position: relative;
+    top: 0;
+    left: 0;
+    transform: none;
+    margin-left: auto;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    padding: 24px 24px 300px 24px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__right-top {
+    margin-bottom: 0;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product-info {
+    display: none;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product .personalAccount-hero__content-bloks__orders-list__item-img {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 295px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__right-top__product .personalAccount-hero__content-bloks__orders-list__item-img img {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__right-top .personalAccount-hero__content-bloks__orders-list__item-right {
+    position: absolute;
+    top: 27px;
+    right: 24px;
+  }
+  .personalAccount-hero__content-bloks__bookmarks-list__item-info {
+    flex-direction: column;
+    margin-bottom: 16px;
+  }
+  .personalAccount-hero__content-bloks__bookmarks-list__item-info__img {
+    margin: auto;
+    width: 60%;
+  }
+  .personalAccount-hero__content-bloks__bookmarks-list__item-info__img img {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs {
+    position: inherit;
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__bookmarks-list__item-info__descrs button {
+    top: 24px;
+    left: 24px;
+    bottom: inherit;
+  }
+  .personalAccount-hero__content-bloks__bookmarks-list__item-bottom {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    justify-content: flex-end;
+  }
 }
 @media (max-width: 768px) {
   /* Главная страница */
@@ -6131,7 +6239,7 @@ button {
     width: 100%;
     height: 240px;
     -o-object-fit: cover;
-       object-fit: cover;
+    object-fit: cover;
   }
   .index-stocks__content-mobile-cards__scroll-card__article {
     padding: 24px;
@@ -6524,6 +6632,131 @@ button {
   /* Б/У техника */
   .usedEquipment-catalog .catalog-content__products-bottom__filter {
     margin-top: 0;
+  }
+  /* Личный кабинет */
+  .personalAccount-main {
+    padding-bottom: 17px;
+  }
+  .personalAccount-main__content {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 18px 24px;
+  }
+  .personalAccount-hero__content {
+    display: flex;
+    flex-direction: column;
+  }
+  .personalAccount-hero__content-bloks__data {
+    padding: 24px;
+  }
+  .personalAccount-hero__content-bloks__data-top {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .personalAccount-hero__content-bloks__data-top img {
+    width: 100px;
+  }
+  .personalAccount-hero__content-bloks__data-bottom__info {
+    position: relative;
+    width: 100%;
+    opacity: 1;
+    pointer-events: all;
+  }
+  .personalAccount-hero__content-bloks__data-bottom__info button {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__data-bottom__form {
+    width: 100%;
+    max-width: 100%;
+    background-color: var(--white);
+  }
+  .personalAccount-hero__content-bloks__data-bottom__form .double {
+    display: flex;
+    flex-direction: column;
+  }
+  .personalAccount-hero__content-bloks__data-bottom__form .double-address {
+    display: flex;
+    flex-direction: column;
+  }
+  .personalAccount-hero__content-bloks__data-bottom__form .three {
+    display: flex;
+    flex-direction: column;
+  }
+  .personalAccount-hero__content-bloks__data-bottom__form button {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__orders-nav {
+    margin-bottom: 11px;
+  }
+  .personalAccount-hero__content-bloks__orders-nav__search {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__orders-nav__search label {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__orders-nav__sorting {
+    display: none;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item.change {
+    border: 1px solid var(--white);
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed {
+    flex-direction: column-reverse;
+    justify-content: start;
+    min-height: 443px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-right__price {
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+    margin-bottom: 17px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-right__price p.orders-status {
+    margin-bottom: 0;
+    line-height: 155%;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-info {
+    flex-direction: row-reverse;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-img {
+    position: absolute;
+    top: inherit;
+    bottom: 260px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 87%;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-collapsed .personalAccount-hero__content-bloks__orders-list__item-img img {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded .personalAccount-hero__content-bloks__orders-list__item-info {
+    padding-top: 50px;
+    flex-direction: row;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded .personalAccount-hero__content-bloks__orders-list__item-right {
+    width: 86%;
+    justify-content: space-between;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded .personalAccount-hero__content-bloks__orders-list__item-right__price {
+    display: flex;
+    gap: 9px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded .personalAccount-hero__content-bloks__orders-list__item-right__price .orders-status {
+    display: block;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__left-info__block {
+    margin-top: 3px;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded__right-btns button {
+    width: 100%;
+  }
+  .personalAccount-hero__content-bloks__orders-list__item-expanded .personalAccount-hero__content-bloks__orders-list__item-img {
+    bottom: -18px;
+    width: 86%;
   }
 }
 @media (max-width: 540px) {
