@@ -944,7 +944,8 @@
 
             & .price-slider {
               -webkit-appearance: none;
-              appearance: none;
+              -moz-appearance: none;
+                   appearance: none;
               position: absolute;
               width: 100%;
               height: 5px;
@@ -2332,6 +2333,14 @@
             letter-spacing: 0.02em;
             color: #373935;
 
+            &::-moz-placeholder {
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 143%;
+              letter-spacing: 0.02em;
+              color: #373935;
+            }
+
             &::placeholder {
               font-weight: 500;
               font-size: 14px;
@@ -2424,6 +2433,14 @@
             font-size: 16px;
             line-height: 137%;
             color: var(--gray-3);
+
+            &::-moz-placeholder {
+              font-family: var(--second-family);
+              font-weight: 400;
+              font-size: 16px;
+              line-height: 137%;
+              color: var(--gray-3);
+            }
 
             &::placeholder {
               font-family: var(--second-family);
@@ -2676,6 +2693,14 @@
             letter-spacing: 0.02em;
             color: #373935;
 
+            &::-moz-placeholder {
+              font-weight: 500;
+              font-size: 14px;
+              line-height: 143%;
+              letter-spacing: 0.02em;
+              color: #373935;
+            }
+
             &::placeholder {
               font-weight: 500;
               font-size: 14px;
@@ -2793,7 +2818,8 @@
       }
 
       & img {
-        object-fit: cover;
+        -o-object-fit: cover;
+           object-fit: cover;
         width: 100%;
         height: 100%;
       }
@@ -2963,6 +2989,14 @@
                 padding: 13px 17px;
                 border-radius: 8px;
                 border: 1px solid var(--arrow);
+
+                &::-moz-placeholder {
+                  font-family: var(--second-family);
+                  font-weight: 400;
+                  font-size: 14px;
+                  line-height: 143%;
+                  color: var(--black);
+                }
 
                 &::placeholder {
                   font-family: var(--second-family);
@@ -3196,6 +3230,14 @@
           line-height: 137%;
           color: var(--gray-3);
 
+          ::-moz-placeholder {
+            font-family: var(--second-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 137%;
+            color: var(--gray-3);
+          }
+
           ::placeholder {
             font-family: var(--second-family);
             font-weight: 400;
@@ -3379,6 +3421,14 @@
                 border-radius: 8px;
                 border: 1px solid var(--arrow);
 
+                &::-moz-placeholder {
+                  font-family: var(--second-family);
+                  font-weight: 400;
+                  font-size: 14px;
+                  line-height: 143%;
+                  color: var(--black);
+                }
+
                 &::placeholder {
                   font-family: var(--second-family);
                   font-weight: 400;
@@ -3539,6 +3589,14 @@
           font-size: 16px;
           line-height: 137%;
           color: var(--gray-3);
+
+          ::-moz-placeholder {
+            font-family: var(--second-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 137%;
+            color: var(--gray-3);
+          }
 
           ::placeholder {
             font-family: var(--second-family);
@@ -3720,7 +3778,8 @@
       & img {
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        -o-object-fit: cover;
+           object-fit: cover;
 
         &:nth-child(2) {
           display: none;
@@ -3836,6 +3895,14 @@
           font-size: 16px;
           line-height: 137%;
           color: var(--gray-3);
+
+          ::-moz-placeholder {
+            font-family: var(--second-family);
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 137%;
+            color: var(--gray-3);
+          }
 
           ::placeholder {
             font-family: var(--second-family);
@@ -4152,7 +4219,6 @@
 
     &-bloks {
       position: relative;
-      transition: all 0.5s ease;
 
       &__data {
         position: absolute;
@@ -4170,6 +4236,7 @@
         &.active {
           pointer-events: all;
           opacity: 1;
+          z-index: 1;
         }
 
         &-top {
@@ -4273,7 +4340,8 @@
 
             &.active {
               opacity: 1;
-              pointer-events: all
+              pointer-events: all;
+              z-index: 1;
             }
 
             & .double {
@@ -4312,6 +4380,14 @@
                 border-radius: 8px;
                 border: 1px solid var(--gray-3);
 
+                &::-moz-placeholder {
+                  font-family: var(--second-family);
+                  font-weight: 400;
+                  font-size: 16px;
+                  line-height: 137%;
+                  color: var(--gray-3);
+                }
+
                 &::placeholder {
                   font-family: var(--second-family);
                   font-weight: 400;
@@ -4335,6 +4411,13 @@
                 color: var(--black-2);
                 border-radius: 8px;
                 border: 1px solid var(--gray-3);
+
+                &::-moz-placeholder {
+                  font-family: var(--second-family);
+                  font-weight: 400;
+                  font-size: 16px;
+                  line-height: 137%;
+                }
 
                 &::placeholder {
                   font-family: var(--second-family);
@@ -4374,7 +4457,7 @@
 
         &-nav {
           @include flex-betweenCenter;
-          margin-bottom: 24px;
+          margin-bottom: 18px;
 
           &__search {
             @include flex-center;
@@ -4395,6 +4478,13 @@
                 line-height: 137%;
                 color: var(--black-2);
 
+                &::-moz-placeholder {
+                  font-weight: 400;
+                  font-size: 16px;
+                  line-height: 137%;
+                  color: var(--gray-2);
+                }
+
                 &::placeholder {
                   font-weight: 400;
                   font-size: 16px;
@@ -4406,6 +4496,7 @@
 
             & button {
               @include flex-center;
+              text-wrap: nowrap;
               padding: 12px 17px;
               font-weight: 400;
               font-size: 14px;
@@ -4459,7 +4550,7 @@
           display: flex;
           flex-direction: column;
           gap: 16px;
-          
+
 
           &__item {
             position: relative;
@@ -4470,6 +4561,7 @@
             transition: all 0.5s ease;
 
             &-collapsed {
+              position: relative;
               @include flex-betweenCenter;
               padding: 24px;
               cursor: pointer;
@@ -4480,6 +4572,13 @@
               &.active {
                 opacity: 1;
                 pointer-events: all;
+              }
+
+              .personalAccount-hero__content-bloks__orders-list__item-img {
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                @include transform-center(-50%, -50%);
               }
             }
 
@@ -4665,6 +4764,12 @@
                         font-weight: 400;
                         color: var(--dark);
                       }
+                    }
+                  }
+
+                  .personalAccount-hero__content-bloks__orders-list__item-right__price {
+                    & .orders-status {
+                      display: none;
                     }
                   }
                 }
@@ -5045,6 +5150,138 @@
       gap: 16px;
     }
   }
+
+  /* Личный кабинет */
+
+  .personalAccount-hero {
+
+    &__content {
+
+      &-bloks {
+
+        &__orders {
+
+          &-nav {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+
+            &__sorting {
+              align-self: flex-end;
+            }
+          }
+
+          &-list {
+
+            &__item {
+
+              &-collapsed {
+                justify-content: flex-start;
+                gap: 10px;
+
+                .personalAccount-hero__content-bloks__orders-list__item-img {
+                  position: relative;
+                  top: 0;
+                  left: 0;
+                  transform: none;
+                  margin-left: auto;
+
+                }
+              }
+
+              &-expanded {
+                display: flex;
+                flex-direction: column;
+                gap: 24px;
+                padding: 24px 24px 300px 24px;
+
+                &__right {
+
+                  &-top {
+                    margin-bottom: 0;
+
+                    &__product {
+
+                      &-info {
+                        display: none;
+                      }
+
+                      .personalAccount-hero__content-bloks__orders-list__item-img {
+                        position: absolute;
+                        bottom: 0;
+                        left: 50%;
+                        transform: translateX(-50%);
+                        width: 100%;
+                        height: 295px;
+
+                        & img {
+                          width: 100%;
+                        }
+                      }
+
+                    }
+
+                    .personalAccount-hero__content-bloks__orders-list__item-right {
+
+                      position: absolute;
+                      top: 27px;
+                      right: 24px;
+
+                    }
+                  }
+                }
+
+              }
+            }
+          }
+        }
+
+        &__bookmarks {
+
+          &-list {
+
+            &__item {
+
+              &-info {
+                flex-direction: column;
+                margin-bottom: 16px;
+
+                &__img {
+                  margin: auto;
+                  width: 60%;
+
+                  & img {
+                    width: 100%;
+                  }
+                }
+
+                &__descrs {
+                  position: inherit;
+                  width: 100%;
+
+                  & button {
+                    top: 24px;
+                    left: 24px;
+                    bottom: inherit;
+                  }
+                }
+              }
+
+
+
+              &-bottom {
+                position: relative;
+                bottom: 0;
+                right: 0;
+                justify-content: flex-end;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
 }
 
 @media (max-width: 768px) {
@@ -5242,7 +5479,8 @@
             & img {
               width: 100%;
               height: 240px;
-              object-fit: cover;
+              -o-object-fit: cover;
+                 object-fit: cover;
             }
 
             &__article {
@@ -5791,6 +6029,197 @@
   .usedEquipment-catalog {
     .catalog-content__products-bottom__filter {
       margin-top: 0;
+    }
+  }
+
+  /* Личный кабинет */
+
+  .personalAccount-main {
+
+    padding-bottom: 17px;
+
+    &__content {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 18px 24px;
+    }
+  }
+
+  .personalAccount-hero {
+
+    &__content {
+      display: flex;
+      flex-direction: column;
+
+      &-bloks {
+
+        &__data {
+          padding: 24px;
+
+          &-top {
+            flex-direction: column;
+            align-items: flex-start;
+
+            & img {
+              width: 100px;
+            }
+          }
+
+          &-bottom {
+
+            &__info {
+              position: relative;
+              width: 100%;
+              opacity: 1;
+              pointer-events: all;
+
+              & button {
+                width: 100%;
+              }
+            }
+
+            &__form {
+              width: 100%;
+              max-width: 100%;
+              background-color: var(--white);
+
+              & .double {
+                display: flex;
+                flex-direction: column;
+              }
+
+              & .double-address {
+                display: flex;
+                flex-direction: column;
+              }
+
+              & .three {
+                display: flex;
+                flex-direction: column;
+              }
+
+              & button {
+                width: 100%;
+              }
+            }
+          }
+        }
+
+        &__orders {
+
+          &-nav {
+            margin-bottom: 11px;
+
+            &__search {
+              width: 100%;
+
+              & label {
+                width: 100%;
+              }
+            }
+
+            &__sorting {
+              display: none;
+            }
+          }
+
+          &-list {
+
+            &__item {
+
+              &.change {
+                border: 1px solid var(--white);
+              }
+
+              &-collapsed {
+                flex-direction: column-reverse;
+                justify-content: start;
+                min-height: 443px;
+
+                .personalAccount-hero__content-bloks__orders-list__item-right {
+                  width: 100%;
+                  justify-content: space-between;
+
+                  &__price {
+                    display: flex;
+                    align-items: flex-end;
+                    gap: 8px;
+                    margin-bottom: 17px;
+
+                    & p.orders-status {
+                      margin-bottom: 0;
+                      line-height: 155%;
+                    }
+                  }
+                }
+
+                .personalAccount-hero__content-bloks__orders-list__item-info {
+                  flex-direction: row-reverse;
+                }
+
+                .personalAccount-hero__content-bloks__orders-list__item-img {
+                  position: absolute;
+                  top: inherit;
+                  bottom: 260px;
+                  left: 50%;
+                  transform: translateX(-50%);
+                  width: 87%;
+
+                  & img {
+                    width: 100%;
+                  }
+                }
+
+              }
+
+              &-expanded {
+                .personalAccount-hero__content-bloks__orders-list__item-info {
+                  padding-top: 50px;
+                  flex-direction: row;
+                }
+
+                .personalAccount-hero__content-bloks__orders-list__item-right {
+                  width: 86%;
+                  justify-content: space-between;
+
+                  &__price {
+                    display: flex;
+                    gap: 9px;
+
+                    & .orders-status {
+                      display: block;
+                    }
+                  }
+                }
+
+                &__left {
+
+                  &-info {
+                    &__block {
+                      margin-top: 3px;
+                    }
+                  }
+                }
+
+                &__right {
+
+                  &-btns {
+
+                    & button {
+                      width: 100%;
+                    }
+                  }
+                }
+
+                .personalAccount-hero__content-bloks__orders-list__item-img {
+                  bottom: -18px;
+                  width: 86%;
+                }
+              }
+            }
+          }
+        }
+      }
     }
   }
 
