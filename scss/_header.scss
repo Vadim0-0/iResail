@@ -129,10 +129,19 @@
       color: var(--gray);
     }
 
+    & button {
+      @include flex-center(6px);
+      flex-direction: column;
+      font-weight: 400;
+      font-size: 12px;
+      line-height: 100%;
+      color: var(--gray);
+    }
+
     & .basket {
       position: relative;
 
-      a {
+      & button {
         font-weight: 500;
         font-size: 12px;
         line-height: 100%;
@@ -204,7 +213,7 @@
 
           &.active {
 
-            & button {
+            & a {
               background-color: var(--white);
 
               & p{
@@ -213,7 +222,7 @@
             }
           }
 
-          & button {
+          & a {
             position: relative;
             display: flex;
             align-items: center;
@@ -256,6 +265,7 @@
     }
 
     &-products {
+      display: none;
       position: relative;
       padding: 46px 129px 45px 66px;
       width: 100%;
@@ -300,6 +310,79 @@
 
 .header-menu-mobile {
   display: none;
+}
+
+.header__basket {
+  position: absolute;
+  width: 100%;
+  left: 0;
+  top: -600%;
+  transition: all 1s ease;
+
+  &.active {
+    top: 41px;
+  }
+
+  &-content {
+    margin-left: auto;
+    width: 412px;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.12);
+    background-color: var(--white);
+
+    &__card {
+      display: flex;
+      margin-bottom: 24px;
+
+      & img {
+        width: 72px;
+        margin-right: 16px;
+      }
+
+      & h3 {
+        max-width: 141px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 157%;
+        color: var(--black-2);
+      }
+
+      &-info {
+        @include flex-center(8px);
+        margin-left: auto;
+        height: 24px;
+
+        & p {
+          font-weight: 500;
+          font-size: 16px;
+          line-height: 150%;
+          text-align: right;
+          color: var(--black-2);
+        }
+
+        & button {
+          @include flex-center;
+          width: 24px;
+          height: 24px;
+          border-radius: 100px;
+          background-color: var(--background);
+        }
+      }
+
+      &:not(:last-child) {
+        margin-bottom: 24px;
+        padding-bottom: 24px;
+        border-bottom: 1px solid var(--arrow);
+      }
+    }
+  }
+
+  &-btn {
+    padding: 13px;
+    width: 100%;
+  }
+
 }
 
 .catalog-header .header-bottom {
@@ -387,6 +470,13 @@
         }
       }
 
+    }
+  }
+
+  .header__basket {
+
+    &.active {
+      top: 0;
     }
   }
 }
@@ -485,7 +575,7 @@
 
               &.active {
 
-                & button {
+                & a {
 
                   & p {
                     color: var(--green);
@@ -493,7 +583,7 @@
                 }
               }
 
-              & button {
+              & a {
                 position: relative;
                 display: flex;
                 align-items: center;
