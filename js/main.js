@@ -20,11 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* Header - переключение блоков */
+/* Header - переключение блоков
 
 document.addEventListener("DOMContentLoaded", () => {
   // Получаем все кнопки в меню
-  const menuItems = document.querySelectorAll('.header-menu__content-menu__list-item button');
+  const menuItems = document.querySelectorAll('.header-menu__content-menu__list-item a');
   // Получаем все списки с продуктами
   const productLists = document.querySelectorAll('.header-menu__content-products__card-list');
 
@@ -61,6 +61,8 @@ document.addEventListener("DOMContentLoaded", () => {
 
 });
 
+*/
+
 /* Header - menu-mobile - открытие закрытие  */
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -83,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* Header - menu-mobile - открытие карточек  */
+/* Header - menu-mobile - открытие карточек
 
 document.addEventListener('DOMContentLoaded', () => {
   // Получаем все элементы меню
@@ -125,6 +127,45 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
+*/
+
+/* Header - открытие карточки корзина */
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Получаем все элементы с классом кнопки корзины, блок корзины, контент корзины и кнопку перехода в корзину
+  const basketButtons = document.querySelectorAll('.header-bottom__item-basket');
+  const basket = document.querySelector('.header__basket');
+  const basketContent = document.querySelector('.header__basket-content');
+  const basketBtn = document.querySelector('.header__basket-btn');
+
+  // Добавляем слушатель события для каждой кнопки корзины
+  basketButtons.forEach(button => {
+    button.addEventListener('click', function (event) {
+      event.stopPropagation(); // Останавливаем распространение события, чтобы избежать немедленного закрытия
+      basket.classList.add('active'); // Добавляем класс active при клике на любую кнопку с классом
+    });
+  });
+
+  // Добавляем слушатель события для ухода курсора с блока корзины
+  basketContent.addEventListener('mouseleave', function () {
+    basket.classList.remove('active'); // Убираем класс active
+  });
+
+  // Добавляем слушатель события для клика по кнопке перехода в корзину
+  basketBtn.addEventListener('click', function (event) {
+    event.stopPropagation(); // Останавливаем распространение события, чтобы избежать немедленного закрытия
+    basket.classList.remove('active'); // Убираем класс active
+  });
+
+  // Добавляем глобальный слушатель для клика за пределами корзины
+  document.addEventListener('click', function (event) {
+    // Проверяем, что клик произошел не внутри корзины
+    if (!basketContent.contains(event.target)) {
+      basket.classList.remove('active'); // Убираем класс active
+    }
+  });
+
+});
 
 
 /* Главная странциа - hero */
@@ -1253,6 +1294,8 @@ document.addEventListener('DOMContentLoaded', function () {
   const mapBlock = document.querySelector('.makingOrder-hero__content-making__block-delivery__map');
   const addressBlock = document.querySelector('.makingOrder-hero__content-making__block-delivery__address');
   const deliveryBlock = document.querySelector('.makingOrder-hero__content-making__block-delivery');
+  const adressInput = document.querySelector('#makingOrder-adress'); // Исправил на правильный селектор
+  const floorInput = document.getElementById('makingOrder-floor');
 
   // Функция для обновления высоты блока
   function updateDeliveryBlockHeight() {
@@ -1261,6 +1304,17 @@ document.addEventListener('DOMContentLoaded', function () {
           deliveryBlock.style.height = activeBlock.offsetHeight + 'px';
       } else {
           deliveryBlock.style.height = '0px';
+      }
+  }
+
+  // Функция для добавления/удаления атрибута required
+  function toggleRequiredFields(isRequired) {
+      if (isRequired) {
+          adressInput.setAttribute('required', 'required');
+          floorInput.setAttribute('required', 'required');
+      } else {
+          adressInput.removeAttribute('required');
+          floorInput.removeAttribute('required');
       }
   }
 
@@ -1282,6 +1336,9 @@ document.addEventListener('DOMContentLoaded', function () {
       mapBlock.classList.add('active');
       addressBlock.classList.remove('active');
 
+      // Убираем required с полей для адреса и этажа
+      toggleRequiredFields(false);
+
       // Обновляем высоту с небольшой задержкой для того, чтобы классы применились корректно
       setTimeout(updateDeliveryBlockHeight, 0);
   }
@@ -1291,6 +1348,9 @@ document.addEventListener('DOMContentLoaded', function () {
       pickupBtn.classList.remove('active');
       mapBlock.classList.remove('active');
       addressBlock.classList.add('active');
+
+      // Добавляем required к полям для адреса и этажа
+      toggleRequiredFields(true);
 
       // Обновляем высоту с небольшой задержкой для того, чтобы классы применились корректно
       setTimeout(updateDeliveryBlockHeight, 0);
@@ -1307,12 +1367,18 @@ document.addEventListener('DOMContentLoaded', function () {
       pickupBtn.classList.add('active');
       addressBtn.classList.remove('active');
       deliveryBlock.classList.remove('active');
+
+      // Убираем required с полей для адреса и этажа
+      toggleRequiredFields(false);
   }
 
   function smallScreenAddressHandler() {
       addressBtn.classList.add('active');
       pickupBtn.classList.remove('active');
       deliveryBlock.classList.add('active');
+
+      // Добавляем required к полям для адреса и этажа
+      toggleRequiredFields(true);
   }
 
   // Функция для очистки всех слушателей, чтобы не было конфликтов
@@ -1332,7 +1398,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (screenWidth < 768) {
           // Код для маленьких экранов
-          deliveryBlock.style.height = 'auto';  // Убираем контроль высоты
+          deliveryBlock.style.height = 'auto'; // Убираем контроль высоты
           initSmallScreenListeners();
       } else {
           // Код для больших экранов
@@ -1347,6 +1413,7 @@ document.addEventListener('DOMContentLoaded', function () {
   // Обработка изменения размера экрана
   window.addEventListener('resize', checkScreenWidth);
 });
+
 
 /* Оформление заказа - input */
 
@@ -1366,14 +1433,18 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 
   telInput.addEventListener('input', function () {
-    // Убираем все, кроме цифр и пробелов
-    this.value = this.value.replace(/[^\d\s+]/g, ''); // Убедитесь, что + остается
+    // Убираем все, кроме цифр
+    let numbersOnly = this.value.replace(/[^\d]/g, '');
 
-    // Проверяем, начинается ли номер с +7 или 7
-    if (this.value.length > 0) {
-        if (!this.value.startsWith('7') && !this.value.startsWith('+7')) {
-            this.value = this.value.replace(/^/, '+7'); // Добавляем +7 в начало, если номер не начинается с 7 или +7
-        }
+    // Добавляем +7 в начало
+    if (numbersOnly.length > 1 && !numbersOnly.startsWith('7')) {
+        numbersOnly = '7' + numbersOnly.slice(1);
+    }
+
+    // Применяем маску: +7 XXX XXX XX XX
+    if (numbersOnly.length > 1) {
+        const formattedNumber = `+7 ${numbersOnly.substring(1, 4)} ${numbersOnly.substring(4, 7)} ${numbersOnly.substring(7, 9)} ${numbersOnly.substring(9, 11)}`;
+        this.value = formattedNumber.trim();
     }
   });
 
@@ -1394,7 +1465,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       // Валидация полей
       validateInput(nameInput); // Проверка имени
-      validateInput(telInput, /^\+7 \d{10}$/);  // Проверка телефона
+      validateInput(telInput, /^\+7 \d{3} \d{3} \d{2} \d{2}$/);  // Проверка телефона с маской
       validateInput(emailInput, /^[^\s@]+@[^\s@]+\.[^\s@]+$/);    // Проверка email
       validateInput(adressInput); // Проверка адреса
       validateInput(floorInput, /^[1-9]\d*$/); // Проверка этажа (должен быть положительным числом)
@@ -1407,6 +1478,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
+
 
 
 /* СТраница Рассрочка */
@@ -1805,7 +1877,7 @@ document.addEventListener("DOMContentLoaded", function() {
   window.addEventListener('resize', syncBlockWidth);
 });
 
-/* Личныый кабинет - переключение блоков */
+/* Личныый кабинет - переключение блоков
 
 document.addEventListener('DOMContentLoaded', function() {
   const buttons = document.querySelectorAll('.personalAccount-hero__content-btns button');
@@ -1875,6 +1947,8 @@ document.addEventListener('DOMContentLoaded', function() {
   });
 });
 
+*/
+
 /* Личныый кабинет - form */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1903,10 +1977,19 @@ document.addEventListener("DOMContentLoaded", function () {
     input.value = input.value.replace(/[^а-яА-ЯёЁa-zA-Z]/g, "");
   }
 
-  // Добавление +7 в поле телефона
+  // Форматирование телефона: добавление +7 и маски +7 XXX XXX XX XX
   function formatTel(input) {
-    if (!input.value.startsWith("+7")) {
-      input.value = "+7";
+    let numbersOnly = input.value.replace(/[^\d]/g, '');
+
+    // Добавляем +7 в начало, если длина больше 1 и не начинается с 7
+    if (numbersOnly.length > 1 && !numbersOnly.startsWith('7')) {
+      numbersOnly = '7' + numbersOnly.slice(1);
+    }
+
+    // Применяем маску: +7 XXX XXX XX XX
+    if (numbersOnly.length > 1) {
+      const formattedNumber = `+7 ${numbersOnly.substring(1, 4)} ${numbersOnly.substring(4, 7)} ${numbersOnly.substring(7, 9)} ${numbersOnly.substring(9, 11)}`;
+      input.value = formattedNumber.trim();
     }
   }
 
@@ -1929,7 +2012,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Валидация телефона (обязательное поле и правильный формат)
     formatTel(tel);
-    isValid &= validateField(tel, !tel.value || tel.value.length < 12, "Введите корректный телефон");
+    isValid &= validateField(tel, !tel.value || tel.value.length < 16, "Введите корректный телефон");
 
     // Проверка совпадения паролей
     isValid &= validateField(password1, !password1.value, "Введите пароль");
@@ -1955,11 +2038,12 @@ document.addEventListener("DOMContentLoaded", function () {
     onlyLetters(this);
   });
 
-  // Привязка обработчика к полю Телефон для автоподстановки +7
+  // Привязка обработчика к полю Телефон для автоподстановки +7 и форматирования
   tel.addEventListener("input", function () {
     formatTel(this);
   });
 });
+
 
 /* Личныый кабинет - form - смена блоков */
 
