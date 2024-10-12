@@ -231,15 +231,17 @@
       font-size: 14px;
       line-height: 143%;
       color: var(--gray-3);
-
-      &:hover {
-        text-decoration: underline;
-      }
     }
 
     &-links {
       @include flex-center;
       gap: 24px;
+
+      & a {
+        &:hover {
+          text-decoration: underline;
+        }
+      }
     }
   }
 }
