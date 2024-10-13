@@ -6517,6 +6517,7 @@ button {
     opacity: 1;
   }
   .catalog-content__products-bottom__cards-content__list-item__article-bottom a {
+    z-index: 1;
     opacity: 1;
   }
   /* Карточка товара */
