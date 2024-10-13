@@ -5,6 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerMenu = document.querySelector('.header-menu');
   const headerBottom = document.querySelector('.header-bottom');
   const headerBottomBtn = document.querySelector('.header-bottom__btn');
+  const headerMenuContent = document.querySelector('.header-menu__content-menu');
 
   // Добавляем обработчик клика на кнопку
   headerBottomBtn.addEventListener('click', () => {
@@ -14,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Убираем класс 'active', когда курсор покидает область header-menu
-  headerMenu.addEventListener('mouseleave', () => {
+  headerMenuContent.addEventListener('mouseleave', () => {
     headerMenu.classList.remove('active');
     headerBottom.classList.remove('active');
   });
