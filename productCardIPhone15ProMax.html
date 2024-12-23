@@ -125,29 +125,19 @@
           </nav>
           <ul class="header-bottom__social">
             <li class="header-bottom__item">
-              <a href="#" class="header-bottom__link">
+              <button class="header-bottom__link" id="header-search-open">
                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M18.375 18.375L15.3126 15.3125M17.5 10.0625C17.5 14.1701 14.1701 17.5 10.0625 17.5C5.95488 17.5 2.625 14.1701 2.625 10.0625C2.625 5.95488 5.95488 2.625 10.0625 2.625C14.1701 2.625 17.5 5.95488 17.5 10.0625Z" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-
-              </a>
-            </li>
-            <li class="header-bottom__item">
-              <a href="#" class="header-bottom__link">
-                <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M15.75 17.5V8.75M10.5 17.5V3.5M5.25 17.5V12.25" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-                <p>
-
-                </p>
-              </a>
+                  Поиск
+              </button>
             </li>
             <li class="header-bottom__item">
               <a href="#" class="header-bottom__link">
                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M14.0972 2.625C17.1792 2.625 19.25 5.55844 19.25 8.295C19.25 13.837 10.6556 18.375 10.5 18.375C10.3444 18.375 1.75 13.837 1.75 8.295C1.75 5.55844 3.82083 2.625 6.90278 2.625C8.67222 2.625 9.82917 3.52078 10.5 4.30828C11.1708 3.52078 12.3278 2.625 14.0972 2.625Z" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-
+                  Избранное
               </a>
             </li>
             <li class="header-bottom__item basket">
@@ -155,8 +145,11 @@
                 <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M13.9993 7C13.9993 7.92826 13.6305 8.8185 12.9741 9.47487C12.3178 10.1313 11.4275 10.5 10.4993 10.5C9.57102 10.5 8.68078 10.1313 8.0244 9.47487C7.36802 8.8185 6.99927 7.92826 6.99927 7M3.17834 6.47621L2.56584 13.8262C2.43426 15.4052 2.36847 16.1946 2.63537 16.8037C2.86987 17.3387 3.27617 17.7803 3.78994 18.0584C4.37469 18.375 5.1669 18.375 6.75133 18.375H14.2472C15.8316 18.375 16.6239 18.375 17.2086 18.0584C17.7224 17.7803 18.1287 17.3387 18.3632 16.8037C18.6301 16.1946 18.5643 15.4052 18.4327 13.8262L17.8202 6.47621C17.707 5.11766 17.6504 4.43838 17.3495 3.92425C17.0846 3.47151 16.6901 3.10853 16.2169 2.88212C15.6796 2.625 14.998 2.625 13.6347 2.625L7.36383 2.625C6.00057 2.625 5.31894 2.625 4.7816 2.88211C4.30842 3.10853 3.91393 3.47151 3.64901 3.92425C3.34816 4.43838 3.29155 5.11766 3.17834 6.47621Z" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-
+                  33 499 ₽
               </button>
+              <span class="header-bottom__item-value">
+                1
+              </span>
             </li>
           </ul>
         </div>
@@ -176,18 +169,18 @@
           </a>
           <ul class="header-mobile__social">
             <li class="header-mobile__social-item">
-              <a href="#" class="header-mobile__social-item__link">
+              <button class="header-mobile__social-item__link" id="header-search-open-mobile">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M21 21L17.5001 17.5M20 11.5C20 16.1944 16.1944 20 11.5 20C6.80558 20 3 16.1944 3 11.5C3 6.80558 6.80558 3 11.5 3C16.1944 3 20 6.80558 20 11.5Z" stroke="#10100F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </a>
+              </button>
             </li>
             <li class="header-mobile__social-item header-bottom__item-basket">
-              <a href="#" class="header-mobile__social-item__link">
+              <button href="#" class="header-mobile__social-item__link">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                   <path d="M15.9996 8C15.9996 9.06087 15.5782 10.0783 14.828 10.8284C14.0779 11.5786 13.0605 12 11.9996 12C10.9387 12 9.92131 11.5786 9.17116 10.8284C8.42102 10.0783 7.99959 9.06087 7.99959 8M3.63281 7.40138L2.93281 15.8014C2.78243 17.6059 2.70724 18.5082 3.01227 19.2042C3.28027 19.8157 3.74462 20.3204 4.33177 20.6382C5.00006 21 5.90545 21 7.71623 21H16.283C18.0937 21 18.9991 21 19.6674 20.6382C20.2546 20.3204 20.7189 19.8157 20.9869 19.2042C21.2919 18.5082 21.2167 17.6059 21.0664 15.8014L20.3664 7.40138C20.237 5.84875 20.1723 5.07243 19.8285 4.48486C19.5257 3.96744 19.0748 3.5526 18.5341 3.29385C17.92 3 17.141 3 15.583 3L8.41623 3C6.85821 3 6.07921 3 5.4651 3.29384C4.92433 3.5526 4.47349 3.96744 4.17071 4.48486C3.82689 5.07243 3.76219 5.84875 3.63281 7.40138Z" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
                 </svg>
-              </a>
+              </button>
             </li>
           </ul>
         </div>
@@ -845,6 +838,33 @@
         </div>
       </div>
     </div>
+
+    <div class="header-search">
+      <div class="header-search__content">
+        <div class="header-search__content-top">
+          <label for="headerSearch" class="header-search__content-top__label">
+            <span class="icon">
+              <svg width="21" height="22" viewBox="0 0 21 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18.375 18.875L15.3126 15.8125M17.5 10.5625C17.5 14.6701 14.1701 18 10.0625 18C5.95488 18 2.625 14.6701 2.625 10.5625C2.625 6.45488 5.95488 3.125 10.0625 3.125C14.1701 3.125 17.5 6.45488 17.5 10.5625Z" stroke="#050505" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </span>
+            <input type="text" id="headerSearch" placeholder="Найти товары">
+            <button class="header-search__content-top__label-clear" id="clearBtn">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M15.625 4.375L4.375 15.625" stroke="#969696" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M15.625 15.625L4.375 4.375" stroke="#969696" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+            <button class="btn-global header-search__content-top__label-btn" id="searchBtn">
+              Искать
+            </button>
+          </label>
+        </div>
+        <div class="header-search__content-results" id="headerSearchResults">
+
+        </div>
+      </div>
+    </div>
   </header>
 
   <main class="main">
@@ -1147,95 +1167,74 @@
           </button>
         </div>
         <div class="productCard-information__content">
-          <div class="productCard-information__content-block active" data-target="productCard-information-block1">
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
-                Что нового в iPhone 15 Pro Max дизайн и характеристики
-              </h3>
+          <div class="productCard-information__content-block description active" data-target="productCard-information-block1">
+            <h2>
+              Что нового в iPhone 15 Pro Max дизайн и характеристики
+            </h2>
+            <div class="text-editor">
               <p>
-                Apple представила новый <a href="#">iPhone 15 Pro</a> и <a href="#">iPhone 15 Pro Max</a> , изготовленные из крепкого, но легкого титана аэрокосмического класса, что делает их самыми легкими моделями Pro от Apple. Новый дизайн имеет контурные края и настраиваемые кнопки действий, что позволяет пользователям персонализировать свой iPhone. <br>
+                Apple представила новый iPhone 15 Pro и iPhone 15 Pro Max , изготовленные из крепкого, но легкого титана аэрокосмического класса, что делает их самыми легкими моделями Pro от Apple. Новый дизайн имеет контурные края и настраиваемые кнопки действий, что позволяет пользователям персонализировать свой iPhone. <br>
                 Мощные обновления камеры обеспечивают невероятное качество изображения, эквивалентное семи профессиональным объективам, включая улучшенную систему основной камеры на 48 МП, которая теперь поддерживает новое сверхвысокое разрешение 24 МП по умолчанию, портреты нового поколения с управлением фокусом и глубиной, время. Smart HDR вместе с новой 5-кратной телефотокамерой, созданной эксклюзивно для iPhone 15 Pro Max.
                 A17 Pro открывает игровой опыт нового уровня и профессиональную производительность.
               </p>
               <img src="./img/productCard/productCard-information/productCard-information-img1.png" alt="img">
-            </div>
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
+              <h3>
                 Дизайн айфон 15 о макс
               </h3>
               <p>
                 Айфон 15 об и айфон 15 о макс доступны в четырех потрясающих новых цветах, включая черный титан, белый титан, синий титан и натуральный титан.
               </p>
               <img src="./img/productCard/productCard-information/productCard-information-img2.png" alt="img">
-            </div>
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
+              <h3>
                 Потрясающий, легкий и крепкий дизайн
               </h3>
               <p>
                 iPhone 15 Pro и iPhone 15 Pro Max доступны в размерах дисплеев 6,1 и 6,7 дюймов и имеют крепкий, но легкий титановый дизайн, впервые для iPhone. Этот сплав премиум-класса (тот же, что используется в космических кораблях) имеет одно из самых высоких среди всех металлов соотношение прочности к весу, что делает его самой легкой серией Apple Pro.
               </p>
-              <div class="productCard-information__content-block__section-images">
+              <div class="img-double">
                 <img src="./img/productCard/productCard-information/productCard-information-img3.1.png" alt="img">
                 <img src="./img/productCard/productCard-information/productCard-information-img3.2.png" alt="img">
               </div>
               <p>
                 Обе модели имеют новые изысканные текстуры, контурные края и тончайшие рамки, когда-либо находившиеся на iPhone. Созданная для долговечности, серия Pro сочетает прочность титана с самым крепким задним стеклом в смартфоне и ведущим в области керамическим передним экраном. Используя первый в области термомеханический процесс, титановая полоса охватывает новую структуру, изготовленную из 100% переработанного алюминия, соединяя два металла с невероятной прочностью благодаря твердотельной диффузии.
               </p>
-            </div>
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
+              <h3>
                 A17 Pro: новое поколение Apple Silicon для iPhone
               </h3>
               <p>
-                Самый большой редизайн в истории графических процессоров Apple. A17 Pro – это совершенно новый класс чипов iPhone , который обеспечивает наилучшую графическую производительность. <br><br>
-                iPhone 15 Pro впервые использует аппаратное ускорение трассировки лучей – это почти в четыре раза быстрее, чем программная трассировка лучей, обеспечивая более плавную графику и реалистичное освещение. Это самая быстрая производительность трассировки лучей в смартфоне.
+                Самый большой редизайн в истории графических процессоров Apple. A17 Pro – это совершенно новый класс чипов iPhone , который обеспечивает наилучшую графическую производительность. <br> <br>
+                iPhone 15 Pro впервые использует аппаратное ускорение трассировки лучей – это почти в четыре раза быстрее, чем программная трассировка лучей, обеспечивая более плавную графику и реалистичное освещение. Это самая быстрая производительность трассировки лучей в смартфоне
                 MetalFX Upscaling сочетает производительность GPU и Neural Engine для создания графики с высоким разрешением, потребляя гораздо меньше энергии. Так что вы можете играть непрерывно.
               </p>
-              <ul class="productCard-information__content-block__section-list">
-                <li class="productCard-information__content-block__section-list__item">
-                  <p>
-                    Вплоть до 20% более быстрый графический процессор
-                  </p>
-                </li>
-                <li class="productCard-information__content-block__section-list__item">
-                  <p>
-                    Трассировка лучей в 4 раза быстрее (чем A16 Bionic)
-                  </p>
-                </li>
-                <li class="productCard-information__content-block__section-list__item">
-                  <p>
-                    На 10% более быстрый ЦБ
-                  </p>
-                </li>
-                <li class="productCard-information__content-block__section-list__item">
-                  <p>
-                    В 2 раза быстрее Neural Engine, выполняет почти 35 триллионов операций в секунду с 16 ядрами
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__list">
+                <p>
+                  Вплоть до 20% более быстрый графический процессор
+                </p>
+                <p>
+                  Трассировка лучей в 4 раза быстрее (чем A16 Bionic)
+                </p>
+                <p>
+                  На 10% более быстрый ЦБ
+                </p>
+                <p>
+                  В 2 раза быстрее Neural Engine, выполняет почти 35 триллионов операций в секунду с 16 ядрами
+                </p>
+              </div>
               <img src="./img/productCard/productCard-information/productCard-information-img4.png" alt="img">
-
-            </div>
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
+              <h3>
                 Мощная профессиональная система камер iPhone 15 Pro Max
               </h3>
               <p>
                 iPhone 15 Pro и iPhone 15 Pro Max оснащены эквивалентом семи профессиональных объективов – все они поддерживаются A17 Pro. Благодаря мощности вычислительной фотографии основная камера 48 МП, созданная эксклюзивно для линейки Pro, предоставляет пользователям еще больше гибкости благодаря новому стандартному сверхвысокому разрешению 24 МП, предлагая невероятное качество изображения при практическом размере файла, идеальном для хранения и обмена.
               </p>
-            </div>
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
+              <h3>
                 Портреты нового поколения
               </h3>
               <p>
                 iPhone 15 Pro и iPhone 15 Pro Max отличаются более четкими деталями, более яркими цветами и лучшей производительностью в условиях слабого освещения. В первый раз пользователи могут делать портреты, не переключаясь в портретный режим. Когда в кадре есть человек, собака или кот, или когда пользователь затрагивает сфокусироваться, iPhone автоматически фиксирует информацию о глубине, поэтому пользователи могут позже превратить фотографии в потрясающие портреты в программе «Фото» на iPhone, iPad или Mac. Для большего творческого контроля пользователи могут также настроить точку фокусировки после того, как фотография была сделана.
               </p>
               <img src="./img/productCard/productCard-information/productCard-information-img5.png" alt="img">
-            </div>
-            <div class="productCard-information__content-block__section">
-              <h3 class="sectio-title">
+              <h3>
                 Автономность нового iPhone 15 Pro
               </h3>
               <p>
@@ -1245,289 +1244,269 @@
             </div>
           </div>
           <div class="productCard-information__content-block specifications" data-target="productCard-information-block2">
-            <h2 class="sectio-title">
+            <h2>
               Характеристики Apple iPhone 15 Pro Max nano SIM+eSIM 512GB, натуральный титан
             </h2>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Память
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Встроенная память:
-                  </p>
-                  <p>
-                    512 ГБ
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Встроенная память:
+                </p>
+                <p>
+                  512 ГБ
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Основные параметры
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Серия:
-                  </p>
-                  <p>
-                    iPhone 15
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Серия:
+                </p>
+                <p>
+                  iPhone 15
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Экран
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Разрешение экрана:
-                  </p>
-                  <p>
-                    2796х1290 точек
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Тип экрана:
-                  </p>
-                  <p>
-                    Super Retina XDR
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Автоматический поворот изображения:
-                  </p>
-                  <p>
-                    Да
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Тип сенсорного экрана:
-                  </p>
-                  <p>
-                    емкостный (multitouch)
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Диагональ:
-                  </p>
-                  <p>
-                    6,7″
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Разрешение экрана:
+                </p>
+                <p>
+                  2796&times;1290 точек
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Тип экрана:
+                </p>
+                <p>
+                  Super Retina XDR
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Автоматический поворот изображения:
+                </p>
+                <p>
+                  Да
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Тип сенсорного экрана:
+                </p>
+                <p>
+                  емкостный (multitouch)
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Диагональ:
+                </p>
+                <p>
+                  6,7&Prime;
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Процессор
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Процессор:
-                  </p>
-                  <p>
-                    Apple A17 Pro Bionic
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Процессор:
+                </p>
+                <p>
+                  Apple A17 Pro Bionic
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Камера
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Разрешение фронтальной камеры:
-                  </p>
-                  <p>
-                    12 Мп
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Количество основных камер:
-                  </p>
-                  <p>
-                    3
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Разрешения основных камер:
-                  </p>
-                  <p>
-                    48 Мп, 12 Мп, 12 Мп
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Диафрагмы основных камер:
-                  </p>
-                  <p>
-                    F1.78, F2.2, F2.8
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Вспышка:
-                  </p>
-                  <p>
-                    Да
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Фронтальная камера:
-                  </p>
-                  <p>
-                    Да
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Разрешение фронтальной камеры:
+                </p>
+                <p>
+                  12&nbsp;Мп
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Количество основных камер:
+                </p>
+                <p>
+                  3
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Разрешения основных камер:
+                </p>
+                <p>
+                  48&nbsp;Мп, 12&nbsp;Мп, 12&nbsp;Мп
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Диафрагмы основных камер:
+                </p>
+                <p>
+                  F1.78, F2.2, F2.8
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Вспышка:
+                </p>
+                <p>
+                  Да
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Фронтальная камера:
+                </p>
+                <p>
+                  Да
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Мультимедиа
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Разъем для наушников:
-                  </p>
-                  <p>
-                    USB Type-C
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Разъем для наушников:
+                </p>
+                <p>
+                  USB Type-C
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Связь
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Геопозиционирование:
-                  </p>
-                  <p>
-                    ГЛОНАСС<br>
+              <div class="text-editor__info">
+                <p>
+                  Геопозиционирование:
+                </p>
+                <p>
+                  ГЛОНАСС<br>
                     GPS <br>
                     BeiDou <br>
                     Galileo
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Стандарт:
-                  </p>
-                  <p>
-                    5G
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    NFC:
-                  </p>
-                  <p>
-                    Да
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Wi-Fi:
-                  </p>
-                  <p>
-                    802.11ax
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    BlueTooth:
-                  </p>
-                  <p>
-                    v5.3
-                  </p>
-                </li>
-              </ul>
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Стандарт:
+                </p>
+                <p>
+                  5G
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  NFC:
+                </p>
+                <p>
+                  Да
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Wi-Fi:
+                </p>
+                <p>
+                  802.11ax
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  BlueTooth:
+                </p>
+                <p>
+                  v5.3
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Питание
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Быстрая зарядка:
-                  </p>
-                  <p>
-                    Да
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Разъем для зарядки:
-                  </p>
-                  <p>
-                    USB Type-C
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Функция беспроводной зарядки:
-                  </p>
-                  <p>
-                    Да
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Быстрая зарядка:
+                </p>
+                <p>
+                  Да
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Разъем для зарядки:
+                </p>
+                <p>
+                  USB Type-C
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Функция беспроводной зарядки:
+                </p>
+                <p>
+                  Да
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Дополнительная информация
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Комплектация:
-                  </p>
-                  <p>
-                    iPhone, кабель USB-C, документация
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Комплектация:
+                </p>
+                <p>
+                  iPhone, кабель USB-C, документация
+                </p>
+              </div>
             </div>
-            <div class="productCard-information__content-specifications__sectiion">
+            <div class="text-editor">
               <h3>
                 Корпус
               </h3>
-              <ul class="productCard-information__content-specifications__sectiion-list">
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Размеры (ШxВxГ):
-                  </p>
-                  <p>
-                    159.9 x 76.7 x 8.25 мм
-                  </p>
-                </li>
-                <li class="productCard-information__content-specifications__sectiion-list__item">
-                  <p>
-                    Класс защиты:
-                  </p>
-                  <p>
-                    IP68
-                  </p>
-                </li>
-              </ul>
+              <div class="text-editor__info">
+                <p>
+                  Размеры (ШxВxГ):
+                </p>
+                <p>
+                  159.9 x 76.7 x 8.25 мм
+                </p>
+              </div>
+              <div class="text-editor__info">
+                <p>
+                  Класс защиты:
+                </p>
+                <p>
+                  IP68
+                </p>
+              </div>
             </div>
           </div>
           <div class="productCard-information__content-block reviews" data-target="productCard-information-block3">
@@ -1557,12 +1536,14 @@
             </div>
           </div>
           <ul class="similarProducts-content__list">
-            <li class="similarProducts-content__list-item">
-              <a href="#" class="similarProducts-content__list-item__link"></a>
-              <span class="similarProducts-content__list-item__discount">
-                -2%
-              </span>
-              <div class="similarProducts-content__list-item__simple">
+            <li class="product-card">
+              <a href="#" class="product-card__link"></a>
+              <div class="product-card__sticker">
+                <span class="product-card__sticker-discount">
+                  -2%
+                </span>
+              </div>
+              <div class="product-card__simple">
                 <button>
                   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 17.7188C10.5 17.7188 2.29688 13.125 2.29688 7.54688C2.29704 6.56098 2.63866 5.60556 3.26365 4.84306C3.88864 4.08057 4.75842 3.55807 5.72512 3.36439C6.69181 3.17071 7.69575 3.31781 8.56624 3.78069C9.43673 4.24356 10.12 4.99364 10.5 5.90339L10.5 5.90339C10.88 4.99364 11.5633 4.24357 12.4338 3.78069C13.3042 3.31782 14.3082 3.17071 15.2749 3.36439C16.2416 3.55806 17.1114 4.08057 17.7363 4.84306C18.3613 5.60556 18.703 6.56098 18.7031 7.54688C18.7031 13.125 10.5 17.7188 10.5 17.7188Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -1575,11 +1556,11 @@
                 </button>
               </div>
               <img src="./img/catalogiphone/catalogPhone-cards/catalogPhone-cards-iphone14-white.svg" alt="img">
-              <article class="similarProducts-content__list-item__article">
+              <article class="product-card__article">
                 <h4>
                   Apple iPhone 14 nano SIM+eSIM 128GB, сияющая звезда
                 </h4>
-                <div class="similarProducts-content__list-item__article-price">
+                <div class="product-card__article-price">
                   <p>
                     <span>89 990 ₽</span>
                     79 990 ₽
@@ -1590,7 +1571,7 @@
                     </svg>
                   </button>
                 </div>
-                <div class="similarProducts-content__list-item__article-bottom">
+                <div class="product-card__article-bottom">
                   <p>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M11.6668 3.5L5.25016 9.91667L2.3335 7" stroke="#5D5D5D" stroke-linecap="round" stroke-linejoin="round" />
@@ -1601,9 +1582,9 @@
                 </div>
               </article>
             </li>
-            <li class="similarProducts-content__list-item">
-              <a href="#" class="similarProducts-content__list-item__link"></a>
-              <div class="similarProducts-content__list-item__simple">
+            <li class="product-card">
+              <a href="#" class="product-card__link"></a>
+              <div class="product-card__simple">
                 <button>
                   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 17.7188C10.5 17.7188 2.29688 13.125 2.29688 7.54688C2.29704 6.56098 2.63866 5.60556 3.26365 4.84306C3.88864 4.08057 4.75842 3.55807 5.72512 3.36439C6.69181 3.17071 7.69575 3.31781 8.56624 3.78069C9.43673 4.24356 10.12 4.99364 10.5 5.90339L10.5 5.90339C10.88 4.99364 11.5633 4.24357 12.4338 3.78069C13.3042 3.31782 14.3082 3.17071 15.2749 3.36439C16.2416 3.55806 17.1114 4.08057 17.7363 4.84306C18.3613 5.60556 18.703 6.56098 18.7031 7.54688C18.7031 13.125 10.5 17.7188 10.5 17.7188Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -1616,11 +1597,11 @@
                 </button>
               </div>
               <img src="./img/catalogiphone/catalogPhone-cards/catalogPhone-cards-iphone15Pro-silver.svg" alt="img">
-              <article class="similarProducts-content__list-item__article">
+              <article class="product-card__article">
                 <h4>
                   Apple iPhone 15 Pro nano SIM+nano SIM 256GB, черный титан
                 </h4>
-                <div class="similarProducts-content__list-item__article-price">
+                <div class="product-card__article-price">
                   <p>
                     <span>169 990 ₽</span>
                     139 990 ₽
@@ -1631,7 +1612,7 @@
                     </svg>
                   </button>
                 </div>
-                <div class="similarProducts-content__list-item__article-bottom">
+                <div class="product-card__article-bottom">
                   <p>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M11.6668 3.5L5.25016 9.91667L2.3335 7" stroke="#5D5D5D" stroke-linecap="round" stroke-linejoin="round" />
@@ -1642,9 +1623,14 @@
                 </div>
               </article>
             </li>
-            <li class="similarProducts-content__list-item">
-              <a href="#" class="similarProducts-content__list-item__link"></a>
-              <div class="similarProducts-content__list-item__simple">
+            <li class="product-card">
+              <a href="#" class="product-card__link"></a>
+              <div class="product-card__sticker">
+                <span class="product-card__sticker-discount">
+                  -2%
+                </span>
+              </div>
+              <div class="product-card__simple">
                 <button>
                   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 17.7188C10.5 17.7188 2.29688 13.125 2.29688 7.54688C2.29704 6.56098 2.63866 5.60556 3.26365 4.84306C3.88864 4.08057 4.75842 3.55807 5.72512 3.36439C6.69181 3.17071 7.69575 3.31781 8.56624 3.78069C9.43673 4.24356 10.12 4.99364 10.5 5.90339L10.5 5.90339C10.88 4.99364 11.5633 4.24357 12.4338 3.78069C13.3042 3.31782 14.3082 3.17071 15.2749 3.36439C16.2416 3.55806 17.1114 4.08057 17.7363 4.84306C18.3613 5.60556 18.703 6.56098 18.7031 7.54688C18.7031 13.125 10.5 17.7188 10.5 17.7188Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -1657,11 +1643,11 @@
                 </button>
               </div>
               <img src="./img/catalogiphone/catalogPhone-cards/catalogPhone-cards-iphone14-blue.svg" alt="img">
-              <article class="similarProducts-content__list-item__article">
+              <article class="product-card__article">
                 <h4>
                   Apple iPhone 14 nano SIM+eSIM 128GB, сияющая звезда
                 </h4>
-                <div class="similarProducts-content__list-item__article-price">
+                <div class="product-card__article-price">
                   <p>
                     <span>89 990 ₽</span>
                     79 990 ₽
@@ -1672,7 +1658,7 @@
                     </svg>
                   </button>
                 </div>
-                <div class="similarProducts-content__list-item__article-bottom">
+                <div class="product-card__article-bottom">
                   <p>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M11.6668 3.5L5.25016 9.91667L2.3335 7" stroke="#5D5D5D" stroke-linecap="round" stroke-linejoin="round" />
@@ -1683,12 +1669,14 @@
                 </div>
               </article>
             </li>
-            <li class="similarProducts-content__list-item">
-              <a href="#" class="similarProducts-content__list-item__link"></a>
-              <span class="similarProducts-content__list-item__discount">
-                -2%
-              </span>
-              <div class="similarProducts-content__list-item__simple">
+            <li class="product-card">
+              <a href="#" class="product-card__link"></a>
+              <div class="product-card__sticker">
+                <span class="product-card__sticker-discount">
+                  -2%
+                </span>
+              </div>
+              <div class="product-card__simple">
                 <button>
                   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 17.7188C10.5 17.7188 2.29688 13.125 2.29688 7.54688C2.29704 6.56098 2.63866 5.60556 3.26365 4.84306C3.88864 4.08057 4.75842 3.55807 5.72512 3.36439C6.69181 3.17071 7.69575 3.31781 8.56624 3.78069C9.43673 4.24356 10.12 4.99364 10.5 5.90339L10.5 5.90339C10.88 4.99364 11.5633 4.24357 12.4338 3.78069C13.3042 3.31782 14.3082 3.17071 15.2749 3.36439C16.2416 3.55806 17.1114 4.08057 17.7363 4.84306C18.3613 5.60556 18.703 6.56098 18.7031 7.54688C18.7031 13.125 10.5 17.7188 10.5 17.7188Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -1701,14 +1689,14 @@
                 </button>
               </div>
               <img src="./img/catalogiphone/catalogPhone-cards/catalogPhone-cards-iphone11-dark.svg" alt="img">
-              <article class="similarProducts-content__list-item__article">
+              <article class="product-card__article">
                 <h4>
                   Apple iPhone 11 128GB, черный
                 </h4>
-                <div class="similarProducts-content__list-item__article-price">
+                <div class="product-card__article-price">
                   <p>
-                    <span>66 990 ₽</span>
-                    59 490  ₽
+                    <span>89 990 ₽</span>
+                    79 990 ₽
                   </p>
                   <button>
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1716,7 +1704,7 @@
                     </svg>
                   </button>
                 </div>
-                <div class="similarProducts-content__list-item__article-bottom">
+                <div class="product-card__article-bottom">
                   <p>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M11.6668 3.5L5.25016 9.91667L2.3335 7" stroke="#5D5D5D" stroke-linecap="round" stroke-linejoin="round" />
@@ -1727,12 +1715,14 @@
                 </div>
               </article>
             </li>
-            <li class="similarProducts-content__list-item">
-              <a href="#" class="similarProducts-content__list-item__link"></a>
-              <span class="similarProducts-content__list-item__discount">
-                -2%
-              </span>
-              <div class="similarProducts-content__list-item__simple">
+            <li class="product-card">
+              <a href="#" class="product-card__link"></a>
+              <div class="product-card__sticker">
+                <span class="product-card__sticker-discount">
+                  -2%
+                </span>
+              </div>
+              <div class="product-card__simple">
                 <button>
                   <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M10.5 17.7188C10.5 17.7188 2.29688 13.125 2.29688 7.54688C2.29704 6.56098 2.63866 5.60556 3.26365 4.84306C3.88864 4.08057 4.75842 3.55807 5.72512 3.36439C6.69181 3.17071 7.69575 3.31781 8.56624 3.78069C9.43673 4.24356 10.12 4.99364 10.5 5.90339L10.5 5.90339C10.88 4.99364 11.5633 4.24357 12.4338 3.78069C13.3042 3.31782 14.3082 3.17071 15.2749 3.36439C16.2416 3.55806 17.1114 4.08057 17.7363 4.84306C18.3613 5.60556 18.703 6.56098 18.7031 7.54688C18.7031 13.125 10.5 17.7188 10.5 17.7188Z" stroke="" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
@@ -1744,15 +1734,15 @@
                   </svg>
                 </button>
               </div>
-              <img src="./img/catalogiphone/catalogPhone-cards/catalogPhone-cards-iphone15ProMax-whiteTitan.svg" alt="img">
-              <article class="similarProducts-content__list-item__article">
+              <img src="./img/catalogiphone/catalogPhone-cards/catalogPhone-cards-iphone14-blue.svg" alt="img">
+              <article class="product-card__article">
                 <h4>
-                  Apple iPhone 15 Pro Max nano SIM+eSIM 256GB, белый титан
+                  Apple iPhone 14 nano SIM+eSIM 128GB, сияющая звезда
                 </h4>
-                <div class="similarProducts-content__list-item__article-price">
+                <div class="product-card__article-price">
                   <p>
-                    <span>189 990 ₽</span>
-                    155 990 ₽
+                    <span>89 990 ₽</span>
+                    79 990 ₽
                   </p>
                   <button>
                     <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -1760,7 +1750,7 @@
                     </svg>
                   </button>
                 </div>
-                <div class="similarProducts-content__list-item__article-bottom">
+                <div class="product-card__article-bottom">
                   <p>
                     <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                       <path d="M11.6668 3.5L5.25016 9.91667L2.3335 7" stroke="#5D5D5D" stroke-linecap="round" stroke-linejoin="round" />
@@ -1778,7 +1768,6 @@
         </div>
       </div>
     </section>
-
 
   </main>
 
