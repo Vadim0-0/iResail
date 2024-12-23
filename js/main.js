@@ -142,30 +142,140 @@ document.addEventListener("DOMContentLoaded", () => {
   // Добавляем слушатель события для каждой кнопки корзины
   basketButtons.forEach(button => {
     button.addEventListener('click', function (event) {
-      event.stopPropagation(); // Останавливаем распространение события, чтобы избежать немедленного закрытия
-      basket.classList.add('active'); // Добавляем класс active при клике на любую кнопку с классом
+      event.stopPropagation();
+      basket.classList.add('active');
     });
   });
 
   // Добавляем слушатель события для ухода курсора с блока корзины
   basketContent.addEventListener('mouseleave', function () {
-    basket.classList.remove('active'); // Убираем класс active
+    basket.classList.remove('active');
   });
 
   // Добавляем слушатель события для клика по кнопке перехода в корзину
   basketBtn.addEventListener('click', function (event) {
-    event.stopPropagation(); // Останавливаем распространение события, чтобы избежать немедленного закрытия
-    basket.classList.remove('active'); // Убираем класс active
+    event.stopPropagation();
+    basket.classList.remove('active'); e
   });
 
   // Добавляем глобальный слушатель для клика за пределами корзины
   document.addEventListener('click', function (event) {
-    // Проверяем, что клик произошел не внутри корзины
     if (!basketContent.contains(event.target)) {
-      basket.classList.remove('active'); // Убираем класс active
+      basket.classList.remove('active');
     }
   });
 
+});
+
+/* Header - строка поиска */
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  const searchBlock = document.querySelector('.header-search');
+  const searchButton = document.getElementById('header-search-open');
+  const searchButtonMobile = document.getElementById('header-search-open-mobile'); // Новая кнопка для мобильного поиска
+  const searchContent = document.querySelector('.header-search__content');
+  const clearButton = document.getElementById('clearBtn');
+  const body = document.body;
+
+  function toggleSearchActive() {
+    searchBlock.classList.toggle('active');
+    if (searchBlock.classList.contains('active')) {
+      body.style.overflow = 'hidden';
+    } else {
+      body.style.overflow = '';
+    }
+  }
+
+  // Обработчик для обычной кнопки поиска
+  searchButton.addEventListener('click', function(event) {
+    event.stopPropagation();
+    toggleSearchActive();
+  });
+
+  // Обработчик для мобильной кнопки поиска
+  searchButtonMobile.addEventListener('click', function(event) {
+    event.stopPropagation();
+    toggleSearchActive();
+  });
+
+  document.addEventListener('click', function(event) {
+    if (!searchContent.contains(event.target) && !searchButton.contains(event.target) && !searchButtonMobile.contains(event.target)) {
+      searchBlock.classList.remove('active');
+      body.style.overflow = '';
+    }
+  });
+
+  clearButton.addEventListener('click', () => {
+    searchBlock.classList.remove('active');
+    body.style.overflow = '';
+  });
+
+  searchContent.addEventListener('click', function(event) {
+    event.stopPropagation();
+  });
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+  const searchBox = document.getElementById('headerSearch');
+  const resultsBox = document.getElementById('headerSearchResults');
+  const clearButton = document.getElementById('clearBtn');
+  const submitButton = document.getElementById('searchBtn');
+
+  // Массив с результатами и ссылками
+  const allSuggestions = [
+      { name: "apple", url: "https://example.com/apple" },
+      { name: "application", url: "https://example.com/application" },
+      { name: "bag", url: "https://example.com/bag" },
+      { name: "iphone 15 plus", url: "https://example.com/iphone_15_plus" }
+  ];
+
+  function clearSearch() {
+      searchBox.value = '';
+      resultsBox.style.display = 'none';
+  }
+
+  function submitSearch() {
+      const query = searchBox.value;
+      if (query.trim()) {
+          console.log(`Search query: ${query}`);
+          alert(`Search submitted: ${query}`);
+      } else {
+          alert('Please enter a search query.');
+      }
+  }
+
+  function showResults() {
+      const query = searchBox.value.toLowerCase();
+
+      if (query.trim()) {
+          resultsBox.style.display = 'flex';
+
+          const matchingSuggestions = allSuggestions.filter(suggestion =>
+              suggestion.name.toLowerCase().startsWith(query)
+          );
+
+          if (matchingSuggestions.length > 0) {
+              resultsBox.innerHTML = matchingSuggestions
+                  .map(
+                      suggestion => `
+                          <a href="${suggestion.url}" target="_blank">
+                              <span class="query">${query}</span>
+                              <span class="suggestion">${suggestion.name.slice(query.length)}</span>
+                          </a>`
+                  )
+                  .join('');
+          } else {
+              resultsBox.innerHTML = '<p>No results found</p>';
+          }
+      } else {
+          resultsBox.style.display = 'none';
+      }
+  }
+
+  searchBox.addEventListener('input', showResults);
+  clearButton.addEventListener('click', clearSearch);
+  submitButton.addEventListener('click', submitSearch);
 });
 
 
@@ -517,7 +627,6 @@ document.addEventListener('DOMContentLoaded', function() {
   // Инициализация начальной позиции
   updateVisibleCard(currentIndex);
 });
-
 
 
 /* Каталог - верхний скролл */
@@ -934,7 +1043,6 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-
 /* Карточка товара - прибавление значения */
 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1126,7 +1234,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const prevBtn = document.getElementById("similarProducts-content__btn-prev");
   const nextBtn = document.getElementById("similarProducts-content__btn-next");
   const list = document.querySelector(".similarProducts-content__list");
-  const items = document.querySelectorAll(".similarProducts-content__list-item");
+  const items = document.querySelectorAll(".similarProducts-content__list .product-card");
   const progressBar = document.querySelector(".similarProducts-content__position-progress");
 
   let currentIndex = 0;
@@ -1191,7 +1299,26 @@ document.addEventListener("DOMContentLoaded", function () {
   updateProgress();
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+  const block = document.querySelector('.last-item');
 
+  block.addEventListener('mousemove', (e) => {
+    const rect = block.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+
+    block.style.setProperty('--x', `${x}px`);
+    block.style.setProperty('--y', `${y}px`);
+  });
+
+  block.addEventListener('mouseenter', () => {
+    block.classList.add('active');
+  });
+
+  block.addEventListener('mouseleave', () => {
+    block.classList.remove('active');
+  });
+});
 
 /* Корзина - изменение значения в поле */
 
@@ -1224,67 +1351,36 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 
 
-
 /* Оформление заказа - карта */
 
 document.addEventListener("DOMContentLoaded", function () {
   ymaps.ready(init);
 
-  function init() {
-      // Создаем карту, центрированную на начальной точке
-      var map = new ymaps.Map("map", {
-          center: [55.751574, 37.573856], // Москва
-          zoom: 10
-      });
+        function init() {
+            // Инициализация карты
+            const mapElement = document.getElementById('map');
+            const map = new ymaps.Map(mapElement, {
+                center: [55.751244, 37.618423], // Центр карты (Москва)
+                zoom: 10
+            });
 
-      // Добавляем маркеры на карту
-      var places = [
-          {
-              coords: [55.751574, 37.573856],
-              name: 'Красная площадь',
-              description: 'Одна из самых известных площадей в мире.'
-          },
-          {
-              coords: [55.752023, 37.617499],
-              name: 'Мавзолей Ленина',
-              description: 'Мавзолей Владимира Ленина на Красной площади.'
-          },
-          {
-              coords: [55.757777, 37.615631],
-              name: 'Большой театр',
-              description: 'Национальный театр оперы и балета.'
-          }
-      ];
+            // Поиск всех дочерних элементов с атрибутами data-lat и data-lng
+            const markerElements = mapElement.querySelectorAll('[data-lat][data-lng]');
 
-      // Функция для создания и добавления маркера
-      function addPlace(place) {
-          var placemark = new ymaps.Placemark(place.coords, {
-              // Устанавливаем контент для балуна (всплывающего окна)
-              balloonContentHeader: `<strong>${place.name}</strong>`,
-              balloonContentBody: `<p>${place.description}</p>`,
-              balloonContentFooter: 'Нажмите на маркер для отображения информации',
-              hintContent: place.name // Подсказка при наведении
-          }, {
-              preset: 'islands#icon',
-              iconColor: '#0095b6'
-          });
+            markerElements.forEach(el => {
+                const lat = parseFloat(el.getAttribute('data-lat'));
+                const lng = parseFloat(el.getAttribute('data-lng'));
+                const name = el.getAttribute('data-name') || 'Маркер';
 
-          // Добавляем событие на клик по метке
-          placemark.events.add('click', function () {
-              map.setCenter(place.coords, 14, {
-                  checkZoomRange: true
-              });
-              // Открываем балун на текущем объекте
-              placemark.balloon.open();
-          });
+                // Создание метки
+                const placemark = new ymaps.Placemark([lat, lng], {
+                    balloonContent: name
+                });
 
-          // Добавляем метку на карту
-          map.geoObjects.add(placemark);
-      }
-
-      // Добавляем все места на карту
-      places.forEach(addPlace);
-  }
+                // Добавление метки на карту
+                map.geoObjects.add(placemark);
+            });
+        }
 });
 
 /* Оформление заказа - отображение блоков */
@@ -1481,7 +1577,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 /* СТраница Рассрочка */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1626,7 +1721,6 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 
-
 /* Trade-in & Выкуп техники & Ремонт - переключение формы */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1763,7 +1857,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 
-
 /* Ремонт - появление списка с видом ремонта */
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -1854,7 +1947,6 @@ document.addEventListener('DOMContentLoaded', function () {
       }
   });
 });
-
 
 
 /* Б/У техника - подстраивание ширины */
@@ -2208,6 +2300,3 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 });
-
-
-
