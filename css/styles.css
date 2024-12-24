@@ -1734,6 +1734,10 @@ button {
   .header__basket-content {
     width: 100%;
   }
+  .header-search__content {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
 @media (max-width: 450px) {
   .header {
