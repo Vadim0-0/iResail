@@ -135,12 +135,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuItems = document.querySelectorAll('.header-menu-mobile__content-menu__list-item');
 
   // Функция для установки начальной высоты элементов (высота кнопки или ссылки)
-  menuItems.forEach(item => {
-    const trigger = item.querySelector('button, a'); // Ищем кнопку или ссылку
-    if (trigger) {
-      item.style.height = `${trigger.offsetHeight}px`;
-    }
-  });
+  const setInitialHeights = () => {
+    menuItems.forEach(item => {
+      const trigger = item.querySelector('button, a'); // Ищем кнопку или ссылку
+      if (trigger) {
+        const isActive = item.classList.contains('active');
+        const itemList = item.querySelector('.header-menu-mobile__content-menu__list-item__list');
+        const totalHeight = trigger.offsetHeight + (itemList ? itemList.offsetHeight : 0);
+        item.style.height = isActive ? `${totalHeight}px` : `${trigger.offsetHeight}px`;
+      }
+    });
+  };
+
+  // Устанавливаем начальные высоты при загрузке страницы
+  setInitialHeights();
+
+  // Добавляем слушатель для изменения размера окна
+  window.addEventListener('resize', setInitialHeights);
 
   // Функция для обработки кликов на кнопки или ссылки
   menuItems.forEach(item => {
@@ -182,6 +193,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+
 
 /* Header - открытие карточки корзина */
 
