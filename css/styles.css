@@ -751,6 +751,7 @@ body.color {
 
 img {
   max-width: 100%;
+  pointer-events: none;
 }
 
 a {
@@ -1261,12 +1262,34 @@ button {
   line-height: 100%;
   color: var(--background);
 }
+.header-bottom__social .header-bottom__item {
+  position: relative;
+}
+.header-bottom__social .header-bottom__item .comparison {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0px;
+  top: -10px;
+  right: -7px;
+  width: 20px;
+  height: 20px;
+  border-radius: 100px;
+  box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.08);
+  background-color: #fce000;
+  outline: 2px solid var(--white);
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 100%;
+  color: #000;
+}
 .header-bottom.active {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
   background-color: var(--white) !important;
 }
 .header-bottom.color {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+  box-shadow: 0 0 1px 0 #616161;
   background-color: var(--white) !important;
 }
 
@@ -1344,7 +1367,6 @@ button {
   color: var(--green);
 }
 .header-menu__content-products {
-  display: none;
   position: relative;
   padding: 46px 129px 45px 66px;
   width: 100%;
@@ -1583,6 +1605,9 @@ button {
     top: 33px;
     right: 0;
   }
+  .header-menu.active {
+    top: 210px;
+  }
   .header-menu__content-menu {
     min-width: 35%;
   }
@@ -1632,6 +1657,9 @@ button {
     justify-content: center;
     align-items: center;
     gap: 10px;
+  }
+  .header-menu {
+    display: none;
   }
   .header-menu-mobile {
     position: absolute;
@@ -1683,10 +1711,13 @@ button {
     overflow: hidden;
     transition: all 0.5s ease;
   }
-  .header-menu-mobile__content-menu__list-item.active a p {
+  .header-menu-mobile__content-menu__list-item.active button p {
     color: var(--green);
   }
-  .header-menu-mobile__content-menu__list-item a {
+  .header-menu-mobile__content-menu__list-item.active button .arrow {
+    transform: rotate(90deg) translateX(-50%);
+  }
+  .header-menu-mobile__content-menu__list-item button, .header-menu-mobile__content-menu__list-item a {
     position: relative;
     display: flex;
     align-items: center;
@@ -1695,10 +1726,10 @@ button {
     width: 100%;
     transition: all 0.3s ease-in-out;
   }
-  .header-menu-mobile__content-menu__list-item a svg:nth-child(1) {
+  .header-menu-mobile__content-menu__list-item button svg:nth-child(1), .header-menu-mobile__content-menu__list-item a svg:nth-child(1) {
     min-width: 24px;
   }
-  .header-menu-mobile__content-menu__list-item a p {
+  .header-menu-mobile__content-menu__list-item button p, .header-menu-mobile__content-menu__list-item a p {
     text-align: start;
     font-family: var(--third-family);
     font-weight: 500;
@@ -1707,16 +1738,17 @@ button {
     color: var(--black);
     transition: all 0.3s ease-in-out;
   }
-  .header-menu-mobile__content-menu__list-item a .arrow {
+  .header-menu-mobile__content-menu__list-item button .arrow, .header-menu-mobile__content-menu__list-item a .arrow {
     position: absolute;
     top: 50%;
     right: 10px;
     transform: translate(0, -50%);
+    transition: all 0.3s ease-in-out;
   }
-  .header-menu-mobile__content-menu__list-item a:hover {
+  .header-menu-mobile__content-menu__list-item button:hover, .header-menu-mobile__content-menu__list-item a:hover {
     background-color: var(--white);
   }
-  .header-menu-mobile__content-menu__list-item a:hover p {
+  .header-menu-mobile__content-menu__list-item button:hover p, .header-menu-mobile__content-menu__list-item a:hover p {
     color: var(--green);
   }
   .header-menu-mobile__content-menu__list-item__list {
@@ -3042,13 +3074,16 @@ button {
 }
 .catalog-content__products-bottom__cards-content__list.change .product-card {
   flex-direction: row;
+  justify-content: left;
+  gap: 20px;
   height: auto;
   padding: 24px 44px;
-  align-items: flex-start;
 }
 .catalog-content__products-bottom__cards-content__list.change .product-card__article {
+  align-items: flex-start;
   height: auto;
-  width: 50%;
+  width: 100%;
+  padding-top: 0;
 }
 .catalog-content__products-bottom__cards-btn {
   margin-bottom: 24px;
@@ -3160,16 +3195,8 @@ button {
   overflow: hidden;
 }
 .productCard-hero__content-images__container-scroll__block {
-  position: absolute;
-  opacity: 0;
-  pointer-events: none;
   display: flex;
   transition: all 0.5s ease;
-}
-.productCard-hero__content-images__container-scroll__block.active {
-  position: relative;
-  opacity: 1;
-  pointer-events: all;
 }
 .productCard-hero__content-images__container-scroll__block button {
   display: flex;
@@ -3204,7 +3231,7 @@ button {
   gap: 12px;
   justify-content: flex-start;
 }
-.productCard-hero__content-specifications__block-colors button {
+.productCard-hero__content-specifications__block-colors a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3215,27 +3242,27 @@ button {
   border: 1px solid var(--arrow);
   transition: all 0.3s ease-in-out;
 }
-.productCard-hero__content-specifications__block-colors button span {
+.productCard-hero__content-specifications__block-colors a span {
   width: 29px;
   height: 29px;
   border-radius: 100px;
 }
-.productCard-hero__content-specifications__block-colors button span.titanium {
+.productCard-hero__content-specifications__block-colors a span.titanium {
   background-color: #b6aea8;
 }
-.productCard-hero__content-specifications__block-colors button span.pink {
+.productCard-hero__content-specifications__block-colors a span.pink {
   background-color: #9e50d0;
 }
-.productCard-hero__content-specifications__block-colors button span.grey {
+.productCard-hero__content-specifications__block-colors a span.grey {
   background-color: #d4d4d3;
 }
-.productCard-hero__content-specifications__block-colors button span.yellow {
+.productCard-hero__content-specifications__block-colors a span.yellow {
   background-color: #ffffbf;
 }
-.productCard-hero__content-specifications__block-colors button span.blue {
+.productCard-hero__content-specifications__block-colors a span.blue {
   background-color: #a7bacc;
 }
-.productCard-hero__content-specifications__block-colors button.active {
+.productCard-hero__content-specifications__block-colors a.active {
   border: 2px solid var(--green);
 }
 .productCard-hero__content-specifications__block-memory {
@@ -3245,7 +3272,7 @@ button {
   gap: 8px;
   justify-content: flex-start;
 }
-.productCard-hero__content-specifications__block-memory button {
+.productCard-hero__content-specifications__block-memory a {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -3260,7 +3287,7 @@ button {
   color: var(--black-2);
   transition: all 0.3s ease-in-out;
 }
-.productCard-hero__content-specifications__block-memory button.active {
+.productCard-hero__content-specifications__block-memory a.active {
   color: var(--green);
   border: 1px solid var(--green);
 }
