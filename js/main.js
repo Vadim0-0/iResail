@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const headerMenu = document.querySelector('.header-menu');
   const headerBottom = document.querySelector('.header-bottom');
   const headerBottomBtn = document.querySelector('.header-bottom__btn');
-  const headerMenuContent = document.querySelector('.header-menu__content-menu');
+  const headerMenuContent = document.querySelector('.header-menu__content');
 
   // Добавляем обработчик клика на кнопку
   headerBottomBtn.addEventListener('click', () => {
@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-/* Header - переключение блоков
+/* Header - переключение блоков */
 
 document.addEventListener("DOMContentLoaded", () => {
   // Получаем все кнопки в меню
@@ -55,14 +55,56 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Назначаем обработчики событий для всех кнопок (событие 'mouseenter' вместо 'click')
-  menuItems.forEach(button => {
-    button.addEventListener('mouseenter', handleMenuHover);
-  });
+  // Функция для обработки кликов на мобильных устройствах
+  function handleMobileClick(event) {
+    const targetId = event.currentTarget.id;
 
+    // Проверяем, активна ли уже эта кнопка
+    if (!event.currentTarget.dataset.clicked) {
+      // Если кнопка не была активирована, предотвращаем переход по ссылке
+      event.preventDefault();
+
+      // Удаляем класс active у всех элементов меню
+      menuItems.forEach(item => {
+        item.parentElement.classList.remove('active');
+        delete item.dataset.clicked; // Сбрасываем предыдущие клики
+      });
+
+      // Добавляем класс active к текущей кнопке
+      event.currentTarget.parentElement.classList.add('active');
+
+      // Устанавливаем флаг клика на текущей кнопке
+      event.currentTarget.dataset.clicked = "true";
+
+      // Удаляем класс active у всех списков продуктов
+      productLists.forEach(list => {
+        list.classList.remove('active');
+      });
+
+      // Находим и активируем соответствующий список продуктов
+      const targetList = document.querySelector(`.header-menu__content-products__card-list[data-target="${targetId}"]`);
+      if (targetList) {
+        targetList.classList.add('active');
+      }
+    } else {
+      // Если кнопка уже активна, даем возможность перейти по ссылке
+      delete event.currentTarget.dataset.clicked; // Сбрасываем флаг клика
+    }
+  }
+
+  // Определяем, используется ли мобильное устройство
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+  // Назначаем обработчики событий
+  menuItems.forEach(button => {
+    if (isMobile) {
+      button.addEventListener('click', handleMobileClick);
+    } else {
+      button.addEventListener('mouseenter', handleMenuHover);
+    }
+  });
 });
 
-*/
 
 /* Header - menu-mobile - открытие закрытие  */
 
@@ -86,49 +128,60 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 });
 
-/* Header - menu-mobile - открытие карточек
+/* Header - menu-mobile - открытие карточек */
 
 document.addEventListener('DOMContentLoaded', () => {
   // Получаем все элементы меню
   const menuItems = document.querySelectorAll('.header-menu-mobile__content-menu__list-item');
 
-  // Функция для установки начальной высоты элементов (высота кнопки)
+  // Функция для установки начальной высоты элементов (высота кнопки или ссылки)
   menuItems.forEach(item => {
-    const button = item.querySelector('button');
-    item.style.height = `${button.offsetHeight}px`;
+    const trigger = item.querySelector('button, a'); // Ищем кнопку или ссылку
+    if (trigger) {
+      item.style.height = `${trigger.offsetHeight}px`;
+    }
   });
 
-  // Функция для обработки кликов на кнопки
+  // Функция для обработки кликов на кнопки или ссылки
   menuItems.forEach(item => {
-    const button = item.querySelector('button');
+    const trigger = item.querySelector('button, a'); // Ищем кнопку или ссылку
 
-    button.addEventListener('click', () => {
-      // Проверяем, активен ли элемент уже
-      const isActive = item.classList.contains('active');
+    if (trigger) {
+      trigger.addEventListener('click', (event) => {
+        // Если это ссылка, позволяем ей работать как обычно
+        if (trigger.tagName.toLowerCase() === 'a') {
+          return;
+        }
 
-      // Убираем активный класс у всех элементов и сбрасываем их высоту
-      menuItems.forEach(i => {
-        i.classList.remove('active');
-        const btn = i.querySelector('button');
-        i.style.height = `${btn.offsetHeight}px`;
+        event.preventDefault(); // Предотвращаем действие по умолчанию для кнопки
+
+        // Проверяем, активен ли элемент уже
+        const isActive = item.classList.contains('active');
+
+        // Убираем активный класс у всех элементов и сбрасываем их высоту
+        menuItems.forEach(i => {
+          i.classList.remove('active');
+          const btnOrLink = i.querySelector('button, a');
+          if (btnOrLink) {
+            i.style.height = `${btnOrLink.offsetHeight}px`;
+          }
+        });
+
+        // Если текущий элемент не был активен, активируем его
+        if (!isActive) {
+          item.classList.add('active');
+
+          // Получаем высоту кнопки или ссылки и вложенного списка
+          const itemList = item.querySelector('.header-menu-mobile__content-menu__list-item__list');
+          const totalHeight = trigger.offsetHeight + (itemList ? itemList.offsetHeight : 0);
+
+          // Устанавливаем новую высоту для активного элемента
+          item.style.height = `${totalHeight}px`;
+        }
       });
-
-      // Если текущий элемент не был активен, активируем его
-      if (!isActive) {
-        item.classList.add('active');
-
-        // Получаем высоту кнопки и вложенного списка
-        const itemList = item.querySelector('.header-menu-mobile__content-menu__list-item__list');
-        const totalHeight = button.offsetHeight + (itemList ? itemList.offsetHeight : 0);
-
-        // Устанавливаем новую высоту для активного элемента
-        item.style.height = `${totalHeight}px`;
-      }
-    });
+    }
   });
 });
-
-*/
 
 /* Header - открытие карточки корзина */
 
@@ -1166,35 +1219,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   // Пересчет размеров кнопок при изменении размера окна
   window.addEventListener('resize', setButtonStyles);
-});
-
-/* Карточка товара - изменение цвета */
-
-document.addEventListener("DOMContentLoaded", function () {
-    // Получаем все кнопки и блоки изображений
-  const colorButtons = document.querySelectorAll('.productCard-hero__content-specifications__block-colors button');
-  const imageBlocks = document.querySelectorAll('.productCard-hero__content-images__container-scroll__block');
-
-  // Функция для удаления класса active у всех элементов
-  function removeActiveClass(elements) {
-    elements.forEach(element => {
-      element.classList.remove('active');
-    });
-  }
-
-  // Добавляем обработчики событий для каждой кнопки
-  colorButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      // Убираем класс active у всех кнопок и блоков изображений
-      removeActiveClass(colorButtons);
-      removeActiveClass(imageBlocks);
-
-      // Добавляем класс active выбранной кнопке и соответствующему блоку изображений
-      button.classList.add('active');
-      imageBlocks[index].classList.add('active');
-    });
-  });
-
 });
 
 /* Карточка товара - переключение активного окна  */
