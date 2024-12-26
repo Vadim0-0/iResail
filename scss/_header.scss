@@ -165,6 +165,29 @@
         color: var(--background);
       }
     }
+
+    & .header-bottom__item {
+      position: relative;
+
+      & .comparison {
+        position: absolute;
+        @include flex-center;
+        top: -10px;
+        right: -7px;
+        width: 20px;
+        height: 20px;
+        border-radius: 100px;
+        box-shadow: 0px 2px 2px 0px rgba(0, 0, 0, 0.08);
+        background-color: #fce000;
+        outline: 2px solid var(--white);
+
+        font-weight: 700;
+        font-size: 12px;
+        line-height: 100%;
+        color: #000;
+
+      }
+    }
   }
 
   &.active {
@@ -173,7 +196,7 @@
   }
 
   &.color {
-    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.08);
+    box-shadow: 0 0 1px 0 #616161;
     background-color: var(--white) !important;
   }
 }
@@ -265,7 +288,6 @@
     }
 
     &-products {
-      display: none;
       position: relative;
       padding: 46px 129px 45px 66px;
       width: 100%;
@@ -542,6 +564,10 @@
 
   .header-menu {
 
+    &.active {
+      top: 210px;
+    }
+
     &__content {
       &-menu {
         min-width: 35%;
@@ -614,6 +640,10 @@
       }
     }
 
+    &-menu {
+      display: none;
+    }
+
     &-menu-mobile {
       position: absolute;
       display: block;
@@ -669,14 +699,19 @@
 
               &.active {
 
-                & a {
+                & button {
 
                   & p {
                     color: var(--green);
                   }
+
+                  & .arrow {
+                    transform: rotate(90deg) translateX(-50%);
+                  }
                 }
               }
 
+              & button,
               & a {
                 position: relative;
                 display: flex;
@@ -705,12 +740,13 @@
                   top: 50%;
                   right: 10px;
                   @include transform-center(0, -50%);
+                  transition: all 0.3s ease-in-out;
                 }
 
                 &:hover {
                   background-color: var(--white);
 
-                  & p{
+                  & p {
                     color: var(--green);
                   }
                 }
